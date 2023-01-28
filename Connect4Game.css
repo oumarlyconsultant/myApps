@@ -1,0 +1,24 @@
+.dot {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(115, 120, 121);
+    border-radius: 50%;
+    border: 5px solid black;
+    display: inline-block;
+  }
+.redDot{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(228, 19, 29);
+    border-radius: 50%;
+    border: 5px solid black;
+    display: inline-block;
+}
+.blueDot{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(19, 92, 228);
+    border-radius: 50%;
+    border: 5px solid black;
+    display: inline-block;
+}
