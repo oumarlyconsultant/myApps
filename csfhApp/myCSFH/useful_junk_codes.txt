@@ -1,0 +1,6 @@
+        <p>Que voulez-vous faire?</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-plus-circle">Creer nouveau profile</i></a> &nbsp;
+        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-folder">Modifier profile existant</i></a> &nbsp;
+        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-plus-circle">Ajouter feuille d'emargement</i></a>
+        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-folder">Modifier feuille d'emargement</i></a>
+      </div>
