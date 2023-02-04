@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("acceuil/", include('gestionStock.urls',namespace='acceuil_principal'))
+    path("acceuil/", include('acceuil.urls',namespace='page_acceuil')),
+    path("acceuil/", include('gestionPersonnel.urls',namespace='repertoire_employes'),name='repertoire_employes'),
 ]
 

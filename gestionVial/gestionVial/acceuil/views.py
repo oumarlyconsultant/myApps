@@ -3,5 +3,5 @@ from django.http import HttpResponse
 from django.http import Http404
 
 # Create your views here.
-def repertoire_employes(request):
-    return render(request,"repertoire_employes.html",{})
+def page_acceuil(request):
+    return render(request,"page_acceuil.html",{})
