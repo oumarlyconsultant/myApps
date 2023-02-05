@@ -19,6 +19,6 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("gestionVial/", include('acceuil.urls',namespace='page_acceuil')),
-    re_path('gestionVial/gP_repEmp/', include('gestionPersonnel.urls',namespace="repertoire_employes")),
+    # re_path('gestionVial/gP_repEmp/', include('gestionPersonnel.urls',namespace="repertoire_employes")),
 ]
 
