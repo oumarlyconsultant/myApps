@@ -12,8 +12,8 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"> </script>  
    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  
 
-   <link rel="stylesheet" href="{%static 'acceuil/css/base3.css' %}">
-   <script src="{% static 'acceuil/js/base3.js' %}"></script>
+   <link rel="stylesheet" href="{%static 'acceuil/css/base.css' %}">
+   <script src="{% static 'acceuil/js/base.js' %}"></script>
    
    {% block title %}
    {% endblock %}
@@ -51,12 +51,12 @@
                <ul class="nav-second-level collapse" id="collapseSubItems2" data-parent="#navAccordion">  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Consulter niveau de stock</span>  
+                     <span class="nav-link-text">Consulter niveau actuel du stock</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Mis a jour niveau de stock</span>  
+                     <span class="nav-link-text">Mettre a jour le stock</span>  
                      </a>  
                   </li>  
                </ul>  
@@ -83,12 +83,12 @@
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Repertoire des devis</span>  
+                     <span class="nav-link-text">Historique des devis</span>  
                      </a>  
                   </li>
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Creer nouvelle facture</span>  
+                     <span class="nav-link-text">Generer une facture</span>  
                      </a>  
                   </li>  
                   <!-- <li class="nav-item">  
@@ -110,22 +110,22 @@
                <ul class="nav-second-level collapse" id="collapseSubItems4" data-parent="#navAccordion">  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Facture non-payees</span>  
+                     <span class="nav-link-text">Factures non-payees</span>  
                      </a>  
                   </li> 
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Effectuer paiement</span>  
+                     <span class="nav-link-text">Enregistrer un paiment de facture</span>  
                      </a>  
                   </li>                    
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Paiements effectues</span>  
+                     <span class="nav-link-text">Historique des paiements recus</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Repertoire des factures</span>  
+                     <span class="nav-link-text">Historique des factures clients</span>  
                      </a>  
                   </li>
                </ul>  
@@ -152,7 +152,7 @@
                   </li>                    
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Repertoire des commandes</span>  
+                     <span class="nav-link-text">Historique des commandes</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
@@ -174,22 +174,22 @@
                <ul class="nav-second-level collapse" id="collapseSubItems6" data-parent="#navAccordion">  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Facture fournisseur non-payees</span>  
+                     <span class="nav-link-text">Factures fournisseurs non-payees</span>  
                      </a>  
                   </li> 
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Effectuer paiement fournisseur</span>  
+                     <span class="nav-link-text">Enregistrer un paiement de facture fournisseur</span>  
                      </a>  
                   </li>                    
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Paiements fournisseur effectues</span>  
+                     <span class="nav-link-text">Historique des paiements fournisseurs</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Repertoire des factures fournisseur</span>  
+                     <span class="nav-link-text">Historique des factures fournisseurs</span>  
                      </a>  
                   </li>
                </ul>  
@@ -211,7 +211,7 @@
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#" id="nouEmp">  
-                     <span class="nav-link-text">Nouvel employe</span>  
+                     <span class="nav-link-text">Ajouter nouvel employe</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
@@ -219,14 +219,40 @@
                      <span class="nav-link-text">Modifier profil employe</span>  
                      </a>  
                   </li> 
-                  <!-- <li class="nav-item">  
-                     <a class="nav-link" href="#">  
-                     <span class="nav-link-text">Conges et abscences</span>  
-                     </a>  
-                  </li> -->
                </ul>  
             </li>             
-
+            <li class="nav-item">  
+               <a  
+                  class="nav-link nav-link-collapse"  
+                  href="#"  
+                  id="hasSubItems"  
+                  data-toggle="collapse"  
+                  data-target="#collapseSubItems8"  
+                  aria-controls="collapseSubItems8"  
+                  aria-expanded="false"> Salaires et Abscences </a>  
+               <ul class="nav-second-level collapse" id="collapseSubItems8" data-parent="#navAccordion">  
+                  <li class="nav-item">  
+                     <a class="nav-link" href="#" id="repEmp">  
+                     <span class="nav-link-text">Effectuer paiement de salaires</span>  
+                     </a>  
+                  </li>  
+                  <li class="nav-item">  
+                     <a class="nav-link" href="#" id="repEmp">  
+                     <span class="nav-link-text">Historique des paiements</span>  
+                     </a>  
+                  </li>  
+                  <li class="nav-item">  
+                     <a class="nav-link" href="#" id="nouEmp">  
+                     <span class="nav-link-text">Enregistrer absences</span>  
+                     </a>  
+                  </li>  
+                  <li class="nav-item">  
+                     <a class="nav-link" href="#" id="modEmp">  
+                     <span class="nav-link-text">Historique des absences</span>  
+                     </a>  
+                  </li> 
+               </ul>  
+            </li> 
             <div class="div-wrapper">
                <img src="{% static 'acceuil/img/vialmali.png' %}" height="150" width="200" alt="">
             </div>
@@ -245,7 +271,7 @@
       
    </nav>  
    <main class="content-wrapper">  
-   <div class="container-fluid">  
+   <div class="container">  
       {% block pagecontent %}
       {% endblock %}    
    </div>  

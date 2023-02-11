@@ -4,7 +4,7 @@ from blog.models import Employe
 class EmployeForm(forms.ModelForm):
     class Meta():
         model = Employe
-        fields = ('prenom','nom','dateNaissance','sexe','adressDom','ville','pays')
+        fields = ('prenom','nom','dateNaissance','sexe','adressDom','ville','pays','dateEmbauche')
     
         #adding widgets to customize form (add CSS styling)
         # widgets ={
