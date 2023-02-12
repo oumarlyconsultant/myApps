@@ -19,6 +19,7 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("acceuil/", include('acceuil.urls')),
+    path("gestionPersonnel/",include('gestionPersonnel.urls')),
     # re_path('gestionVial/gP_repEmp/', include('gestionPersonnel.urls',namespace="repertoire_employes")),
 ]
 

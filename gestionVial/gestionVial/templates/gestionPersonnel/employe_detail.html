@@ -1,0 +1,12 @@
+{% extends 'acceuil/base.html' %}
+
+{% block pagecontent %}
+<h1>Ci-dessous les informations sur {{ employe_details.prenom }}</h1>
+
+<p>Prenom: {{ employe_details.prenom }}</p>
+<p>Nom: {{ employe_details.nom }}</p>
+<p>sexe: {{ employe_details.sexe }}</p>
+<p>Responsable: {{ employe_details.responsable }}</p>
+
+    
+{% endblock %}  

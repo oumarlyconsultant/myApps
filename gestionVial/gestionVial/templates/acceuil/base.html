@@ -202,21 +202,26 @@
                   data-toggle="collapse"  
                   data-target="#collapseSubItems7"  
                   aria-controls="collapseSubItems7"  
-                  aria-expanded="false"> Personnel </a>  
+                  aria-expanded="false"><i class="fa fa-users" style="color: #f7500e;"></i> Personnel </a>  
                <ul class="nav-second-level collapse" id="collapseSubItems7" data-parent="#navAccordion">  
                   <li class="nav-item">  
-                     <a class="nav-link" href="#" id="repEmp">  
-                     <span class="nav-link-text">Repertoire des employes</span>  
+                     <a class="nav-link" href="{% url 'gestionPersonnel:employe-list' %}" id="repEmp">  
+                     <span class="nav-link-text"><i class="fa fa-book"></i> Repertoire des employes</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
-                     <a class="nav-link" href="#" id="nouEmp">  
-                     <span class="nav-link-text">Ajouter nouvel employe</span>  
+                     <a class="nav-link" href="#" id="repEmp">  
+                     <span class="nav-link-text"><i class="fa fa-bar-chart"></i> Rapports analytiques</span>  
+                     </a>  
+                  </li>                   
+                  <li class="nav-item">  
+                     <a class="nav-link" href="{% url 'gestionPersonnel:nouvelEmp' %}" id="nouEmp">  
+                     <span class="nav-link-text"><i class="fa fa-plus-circle"></i> Enregistrer nouvel employe</span>  
                      </a>  
                   </li>  
                   <li class="nav-item">  
                      <a class="nav-link" href="#" id="modEmp">  
-                     <span class="nav-link-text">Modifier profil employe</span>  
+                     <span class="nav-link-text"><i class="fa fa-cog"></i> Modifier profil employe</span>  
                      </a>  
                   </li> 
                </ul>  
