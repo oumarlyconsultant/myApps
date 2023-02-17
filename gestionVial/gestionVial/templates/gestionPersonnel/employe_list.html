@@ -1,10 +1,10 @@
 {% extends 'acceuil/base.html' %}
 
 {% block pagecontent %}
-<h1>Ci-dessous la liste de tous les employes:</h1>
+<h1>Repertoire des employes</h1>
 
 <ol>
-  {% for employe in object_list %}
+  {% for employe in employes %}
     <li><a href="{{ employe.get_absolute_url }}">{{ employe.prenom }} {{ employe.nom }}</a></li>
     {% empty %}
     <li>Pas d'employe dans la base! :(</li>
