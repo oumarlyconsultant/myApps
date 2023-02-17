@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http import Http404
 # from django.views.generic.list import ListView
 # from django.views.generic.detail import DetailView
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView
 
 from . import forms
 from . import models
@@ -43,6 +43,11 @@ class EmployeCreateView(CreateView):
     model = models.Employe
     fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
 
+class EmployeListUpdate(ListView):
+    model = models.Employe
+    context_object_name = 'employes'
+    template_name = 'gestionPersonnel/employe_list_update.html'
+    
 class EmployeUpdateView(UpdateView):
     model = models.Employe
     fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')

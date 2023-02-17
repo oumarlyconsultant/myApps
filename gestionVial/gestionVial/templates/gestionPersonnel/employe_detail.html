@@ -2,12 +2,18 @@
 
 {% block pagecontent %}
 <div class="jumbotron">
-    <h1>Ci-dessous les informations sur {{ employes.prenom }}</h1>
-
-    <p>Prenom: {{ employes.prenom }}</p>
-    <p>Nom: {{ employes.nom }}</p>
-    <p>sexe: {{ employes.sexe }}</p>
-    <p>Responsable: {{ employes.responsable }}</p>
+    <h1 class="display-4">{{ employes.prenom }} {{ employes.nom }}</b></h1>
+    <hr class="my-4">
+    <h2>Informations personnelles</h2>
+    <p></p>
+    <p><b>Prenom:</b> {{ employes.prenom }}</p>
+    <p><b>Nom:</b> {{ employes.nom }}</p>
+    <p><b>Date de naissance:</b> {{ employes.dateNaissance }}</p>
+    <p><b>Sexe:</b> {{ employes.sexe }}</p>
+    <p><b>Adresse Domicile:</b> {{ employes.adresseDom }}</p>
+    <p><b>Ville:</b> {{ employes.ville }}</p>
+    <p><b>Pays:</b> {{ employes.pays }}</p>
+    <p><b>Responsable:</b> {{ employes.responsable }}</p>
 </div>
 
 

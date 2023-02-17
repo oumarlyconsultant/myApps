@@ -2,12 +2,11 @@
 
 {% block pagecontent %}
 <div class="jumbotron">
-  <h1 class="display-4">Repertoire des employes</h1>
-  <p class="lead">Liste des employe(es) actuelles</p>
-  <hr class="my-4">
+    <h1 class="display-4">Selectionner le profil a modifie</h1>
+    <hr class="my-4">
   <ul>
     {% for employe in employes %}
-      <li><a href="{{ employe.get_absolute_url }}">{{ employe.prenom }} {{ employe.nom }}</a></li>
+      <li><a href="{% url 'gestionPersonnel:updateEmp' pk=employe.numeroEmploye %}">{{ employe.prenom }} {{ employe.nom }}</a></li>
       {% empty %}
       <li>Pas d'employe dans la base! :(</li>
     {% endfor %}
