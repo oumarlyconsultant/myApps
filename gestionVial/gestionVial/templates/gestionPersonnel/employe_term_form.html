@@ -1,0 +1,19 @@
+{% extends 'acceuil/base.html' %}
+
+{% block pagecontent %}
+<div class="jumbotron">
+    <h1 class="display-4">Recrutement de: {{ employe_poste.employe.prenom }} {{ employe_poste.employe.nom }} </h1>
+    <p class="lead">2- Veuillez entrer les termes d'emploi </p>
+
+    <hr class="my-4">
+    <form method="POST">
+        {{ employe_poste.poste }}
+        {{ employe_poste.dateDebut }}
+        {{ employe_poste.dateFin }}
+        {% csrf_token %}
+        <input type="submit" value="Soumettre" class="btn btn-primary btn-lg">        
+    </form>
+</div>
+
+
+{% endblock %}  

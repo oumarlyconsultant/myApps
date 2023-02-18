@@ -1,0 +1,63 @@
+#-------------------- form.py
+from betterforms.multiform import MultiModelForm
+# from crispy_forms.helper import FormHelper
+# from crispy_forms.layout import Submit
+
+class NouvelEmployeForm(MultiModelForm):
+    form_classes = {
+        'employe':EmployeForm,
+        'employe_termEmploi':TermEmploiForm,        
+        'employe_poste':EmployePosteForm,
+        'employe_termPaie':TermPaieForm,
+    }
+
+class EmployeForm(forms.ModelForm):
+    class Meta():
+        model = Employe
+        fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
+    
+        #adding widgets to customize form (add CSS styling)
+        # widgets ={
+        #     'title':forms.TextInput(attrs={'class':'textinputclass'}), #our own class
+        #     'text':forms.Textarea(attrs={'class':'editable medium-editor-textarea postcontent'})
+        # }
+
+
+#-------------------- view.py
+class EmployeDetailView(DetailView):
+    context_object_name = 'employes'
+    model = models.Employe
+    # slug_field = '<uuid:numeroEmploye>'
+    # slug_url_kwarg = '<uuid:numeroEmploye>'
+    # paginate_by = 10
+    # template_name = ...
+
+# Create your views here.
+# def repertoire(request):
+#     tout_employe = models.Employe.objects.all().values()
+#     context = {
+#         'toutEmp':tout_employe
+#     }
+#     return render(request,"gestionPersonnel/repertoire_employes.html",context)
+
+
+
+        return redirect(self.get_success_url())       
+
+
+
+class EmployeCreateView(CreateView):
+    model = models.Employe
+    fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
+
+class EmployeListUpdate(ListView):
+    model = models.Employe
+    context_object_name = 'employes'
+    template_name = 'gestionPersonnel/employe_list_update.html'
+
+class EmployeUpdateView(UpdateView):
+    model = models.Employe
+    fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
+
+
+#-------------------- model.py

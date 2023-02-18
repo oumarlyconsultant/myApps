@@ -8,13 +8,9 @@ from django.urls import reverse, reverse_lazy
 from . import forms
 from . import models
 
-# Create your views here.
-# def repertoire(request):
-#     tout_employe = models.Employe.objects.all().values()
-#     context = {
-#         'toutEmp':tout_employe
-#     }
-#     return render(request,"gestionPersonnel/repertoire_employes.html",context)
+class EmployeCreateView(CreateView):
+    model = models.Employe
+    fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
 
 class EmployeListView(ListView):
 
@@ -25,7 +21,7 @@ class EmployeListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        return context
+        return context   
 
 class EmployeDetailView(DetailView):
     context_object_name = 'employes'
@@ -39,39 +35,42 @@ class EmployeDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         return context
 
-class EmployeCreateView(CreateView):
-    model = models.Employe
-    fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
+def EmployeTermPosteForm(request,pk):
+    if pk:
+        this_employe = models.Employe.objects.get(numeroEmploye = pk)
+        employe_poste = forms.EmployePoste(employe = this_employe)
+        employe_term_emp = forms.TermEmploi(employe =this_employe)
+        employe_term_paie = forms.TermPaie(employe =this_employe)
 
-class EmployeListUpdate(ListView):
-    model = models.Employe
-    context_object_name = 'employes'
-    template_name = 'gestionPersonnel/employe_list_update.html'
-    
-class EmployeUpdateView(UpdateView):
-    model = models.Employe
-    fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
+    if request == 'POST':
+        if employe_poste.is_valid() and employe_term_emp.is_valid() and employe_term_paie.is_valid():
+            employe_poste.save()
+            employe_term_emp.save()
+            employe_term_paie.save()
+        else:
+            print("Erreur dans l'un des formulaires! Veuillez verifier les info encore!")
+    context = {
+        'employe_poste':employe_poste,
+        'employe_term_emp':employe_term_emp,
+        'employe_term_paie':employe_term_paie,
+    }
+    return render(request,'gestionPersonnel/employe_term_form.html',context)
 
-class NouvelEmployeCreate(CreateView):
-    form_class = forms.NouvelEmployeForm
-    success_url = reverse_lazy('acceuil:acceuil')
-    template_name = 'gestionPersonnel/employe_form.html'
 
-    def form_valid(self,form):
-        employe = form['employe_infoPerso'].save()
-        employe_termEmploi = form['employe_termEmploi'].save(commit=False)
-        employe_poste = form['employe_poste'].save(commit=False)
-        employe_termPaie = form['employe_termPaie'].save(commit=False)
+    # def form_valid(self,form):
+    #     employe = form['employe_infoPerso'].save()
+    #     employe_termEmploi = form['employe_termEmploi'].save(commit=False)
+    #     employe_poste = form['employe_poste'].save(commit=False)
+    #     employe_termPaie = form['employe_termPaie'].save(commit=False)
 
-        employe_termEmploi.employe = employe
-        employe_poste.employe = employe
-        employe_termPaie.employe = employe
+    #     employe_termEmploi.employe = employe
+    #     employe_poste.employe = employe
+    #     employe_termPaie.employe = employe
 
-        employe_termEmploi.save()
-        employe_poste.save()
-        employe_termPaie.save()
+    #     employe_termEmploi.save()
+    #     employe_poste.save()
+    #     employe_termPaie.save()
 
-        return redirect(self.get_success_url())
 
 # def rapport(request):
 #     return render(request,"repertoire_employes.html",{})
