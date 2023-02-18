@@ -41,12 +41,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #myApps
+    #my apps
     "acceuil",
     "gestionStock",
     "gestionVentes",
     "gestionPersonnel",
+
+    #additional apps from elsewhere
+    'betterforms',
+    # 'crispy_forms',
 ]
+
+# CRISPY_TEMPLATE_PACK = 'bootstrap4' #Added OL
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -1,0 +1,7 @@
+#Form layout and manipulations
+pip install django-betterforms #Add betterforms to INSTALLED_APPS
+pip install django-crispy-forms #Add crispy_forms to INSTALLED_APPS
+
+#password encryption
+pip install bcrypt
+pip install django[argon2]

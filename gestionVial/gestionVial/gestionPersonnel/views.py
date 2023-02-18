@@ -4,7 +4,7 @@ from django.http import Http404
 # from django.views.generic.list import ListView
 # from django.views.generic.detail import DetailView
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, TemplateView, FormView, DeleteView
-
+from django.urls import reverse, reverse_lazy
 from . import forms
 from . import models
 
@@ -52,6 +52,26 @@ class EmployeUpdateView(UpdateView):
     model = models.Employe
     fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
 
+class NouvelEmployeCreate(CreateView):
+    form_class = forms.NouvelEmployeForm
+    success_url = reverse_lazy('acceuil:acceuil')
+    template_name = 'gestionPersonnel/employe_form.html'
+
+    def form_valid(self,form):
+        employe = form['employe_infoPerso'].save()
+        employe_termEmploi = form['employe_termEmploi'].save(commit=False)
+        employe_poste = form['employe_poste'].save(commit=False)
+        employe_termPaie = form['employe_termPaie'].save(commit=False)
+
+        employe_termEmploi.employe = employe
+        employe_poste.employe = employe
+        employe_termPaie.employe = employe
+
+        employe_termEmploi.save()
+        employe_poste.save()
+        employe_termPaie.save()
+
+        return redirect(self.get_success_url())
 
 # def rapport(request):
 #     return render(request,"repertoire_employes.html",{})
