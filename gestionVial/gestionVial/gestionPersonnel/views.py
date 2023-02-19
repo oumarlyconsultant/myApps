@@ -8,6 +8,7 @@ from django.urls import reverse, reverse_lazy
 from . import forms
 from . import models
 
+
 class EmployeCreateView(CreateView):
     model = models.Employe
     fields = ('prenom','nom','dateNaissance','sexe','adresseDom','ville','pays','responsable')
@@ -37,60 +38,79 @@ class EmployeDetailView(DetailView):
 
 def EmployeTermPosteForm(request,pk):
     if pk:
-        this_employe = models.Employe.objects.get(numeroEmploye = pk)
-        employe_poste = forms.EmployePoste(employe = this_employe)
-        employe_term_emp = forms.TermEmploi(employe =this_employe)
-        employe_term_paie = forms.TermPaie(employe =this_employe)
 
-    if request == 'POST':
-        if employe_poste.is_valid() and employe_term_emp.is_valid() and employe_term_paie.is_valid():
-            employe_poste.save()
-            employe_term_emp.save()
-            employe_term_paie.save()
+        employe = models.Employe.objects.get(numeroEmploye=pk)
+        ini_data = {
+            'employe':employe
+        }
+        posteForm = forms.EmployePosteForm(initial=ini_data)
+        termForm = forms.TermEmploiForm(initial=ini_data)
+        paieForm = forms.TermPaieForm(initial=ini_data)
+
+    if request.method == 'POST':
+        posteForm = forms.EmployePosteForm(request.POST)
+        termForm = forms.TermEmploiForm(request.POST)
+        paieForm = forms.TermPaieForm(request.POST)
+
+        if posteForm.is_valid() and termForm.is_valid() and paieForm.is_valid():
+            posteForm.save(commit=True)
+            termForm.save(commit=True)
+            paieForm.save(commit=True)
+
+            return redirect('gestionPersonnel:list')
         else:
-            print("Erreur dans l'un des formulaires! Veuillez verifier les info encore!")
+            print('ERREUR! Formulaire invalid :(')
     context = {
-        'employe_poste':employe_poste,
-        'employe_term_emp':employe_term_emp,
-        'employe_term_paie':employe_term_paie,
+        'posteForm':posteForm,
+        'termForm':termForm,
+        'paieForm':paieForm,
+        'employe':employe
     }
-    return render(request,'gestionPersonnel/employe_term_form.html',context)
+    return render(request,"gestionPersonnel/employe_term_form.html",context)
+
+# this_employe = models.Employe.objects.get(numeroEmploye = pk)
 
 
-    # def form_valid(self,form):
-    #     employe = form['employe_infoPerso'].save()
-    #     employe_termEmploi = form['employe_termEmploi'].save(commit=False)
-    #     employe_poste = form['employe_poste'].save(commit=False)
-    #     employe_termPaie = form['employe_termPaie'].save(commit=False)
+# if request == 'POST':
+#     employe_poste = forms.EmployePosteForm(request.POST)
+#     employe_term_emp = forms.TermEmploiForm(request.POST)
+#     employe_term_paie = forms.TermPaieForm(request.POST)
+#     if employe_poste.is_valid() and employe_term_emp.is_valid() and employe_term_paie.is_valid():
+#         employe_poste.save()
+#         employe_term_emp.save()
+#         employe_term_paie.save()
 
-    #     employe_termEmploi.employe = employe
-    #     employe_poste.employe = employe
-    #     employe_termPaie.employe = employe
 
-    #     employe_termEmploi.save()
-    #     employe_poste.save()
-    #     employe_termPaie.save()
+# if request == 'POST':
+#     if employe_poste.is_valid() and employe_term_emp.is_valid() and employe_term_paie.is_valid():
+#         employe_poste.save()
+#         employe_term_emp.save()
+#         employe_term_paie.save()
+#     else:
+#         print("Erreur dans l'un des formulaires! Veuillez verifier les info encore!")
+# context = {
+#     'employe_poste':employe_poste,
+#     'employe_term_emp':employe_term_emp,
+#     'employe_term_paie':employe_term_paie,
+# }
+# return render(request,'gestionPersonnel/employe_term_form.html',context)
+
+
+# def form_valid(self,form):
+#     employe = form['employe_infoPerso'].save()
+#     employe_termEmploi = form['employe_termEmploi'].save(commit=False)
+#     employe_poste = form['employe_poste'].save(commit=False)
+#     employe_termPaie = form['employe_termPaie'].save(commit=False)
+
+#     employe_termEmploi.employe = employe
+#     employe_poste.employe = employe
+#     employe_termPaie.employe = employe
+
+#     employe_termEmploi.save()
+#     employe_poste.save()
+#     employe_termPaie.save()
 
 
 # def rapport(request):
 #     return render(request,"repertoire_employes.html",{})
 
-# def nouvelEmp(request):
-#     empForm = forms.EmployeForm()
-#     termForm = forms.TermEmploiForm()
-#     paieForm = forms.TermPaieForm()
-
-#     if request.method == 'POST':
-#         empForm = forms.EmployeForm(request.POST)
-#         if empForm.is_valid():
-#             empForm.save(commit=True)
-#             return repertoire(request)
-#         else:
-#             print('ERREUR! Formulaire invalid :(')
-#     context = {
-#         'empForm':empForm
-#     }
-#     return render(request,"gestionPersonnel/nouvel_employe.html",context)
-
-# def modifEmp(request):
-#     return render(request,"repertoire_employes.html",{})

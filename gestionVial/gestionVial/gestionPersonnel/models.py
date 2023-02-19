@@ -27,7 +27,7 @@ class Employe(models.Model):
 
     def get_absolute_url(self): #go back to this post
         # return reverse("gestionPersonnel:details",kwargs={'pk':self.numeroEmploye})
-        return reverse("gestionPersonnel:create2",kwargs={'pk':self.numeroEmploye})
+        return reverse("gestionPersonnel:details",kwargs={'pk':self.numeroEmploye})
 
     def __str__(self):
         return (self.prenom+" "+self.nom)

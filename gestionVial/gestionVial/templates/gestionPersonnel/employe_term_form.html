@@ -2,14 +2,17 @@
 
 {% block pagecontent %}
 <div class="jumbotron">
-    <h1 class="display-4">Recrutement de: {{ employe_poste.employe.prenom }} {{ employe_poste.employe.nom }} </h1>
+    <h1 class="display-4">Enregistrement de: {{ employe.prenom }} {{ employe.nom }}</h1>
     <p class="lead">2- Veuillez entrer les termes d'emploi </p>
 
     <hr class="my-4">
     <form method="POST">
-        {{ employe_poste.poste }}
-        {{ employe_poste.dateDebut }}
-        {{ employe_poste.dateFin }}
+        <p class="lead">Informations sur le poste</p>
+        {{ posteForm.as_p }}
+        <p class="lead">Termes de l'emploi</p>
+        {{ termForm.as_p }}
+        <p class="lead">Termes sur le salaire et les compensations</p>
+        {{ paieForm.as_p }}
         {% csrf_token %}
         <input type="submit" value="Soumettre" class="btn btn-primary btn-lg">        
     </form>

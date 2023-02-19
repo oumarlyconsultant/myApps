@@ -1,6 +1,6 @@
 from django import forms
 from .models import Departement, Poste, EmployePoste, Employe, TermEmploi, TermPaie
-# from betterforms.multiform import MultiModelForm
+from betterforms.multiform import MultiModelForm
 
 class EmployeForm(forms.ModelForm):
     class Meta():
@@ -22,9 +22,9 @@ class TermPaieForm(forms.ModelForm):
         model = TermPaie
         fields = ('employe','montant','bonus','dateDebut','dateFin','raisonPaie')
 
-# class EmployeTermPostForm(MultiModelForm):
+# class EmployeTermForm(MultiModelForm):
 #     form_classes = {
-#         'employe_poste':EmployePosteForm,
-#         'employe_termEmploi':TermEmploiForm,                
-#         'employe_termPaie':TermPaieForm,
+#         'poste':EmployePosteForm,
+#         'terme':TermEmploiForm,                
+#         'paie':TermPaieForm,
 #     }
