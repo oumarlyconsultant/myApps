@@ -6,3 +6,6 @@ pip install pillow
 #password encryption
 pip install bcrypt
 pip install django[argon2]
+
+#population / data manipulations
+pip install pandas

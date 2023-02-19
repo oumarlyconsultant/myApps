@@ -6,11 +6,13 @@
   <p class="lead">Liste des employe(es) actuelles</p>
   <hr class="my-4">
   <ul>
-    {% for employe in employes %}
-      <li><a href="{{ employe.get_absolute_url }}">{{ employe.prenom }} {{ employe.nom }}</a></li>
-      {% empty %}
+    {% if employes %}
+      {% for employe in employes %}
+        <li><a href="{{ employe.get_absolute_url }}">{{ employe.prenom }} {{ employe.nom }}</a></li>
+      {% endfor %}
+    {% else %}
       <li>Pas d'employe dans la base! :(</li>
-    {% endfor %}
+    {% endif %}
   </ul>
       
 </div>
