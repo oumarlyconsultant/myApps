@@ -1,0 +1,17 @@
+CREATE SCHEMA gestionStock;
+
+CREATE TABLE gestionStock.ClasseMat(
+	classe VARCHAR(50) UNIQUE NOT NULL,
+	info VARCHAR(200)
+);
+
+CREATE TABLE gestionStock.CategorieMat(
+	classe VARCHAR(50) NOT NULL,
+	
+	categorie VARCHAR(50) UNIQUE NOT NULL,
+	info VARCHAR(200),
+	
+	FOREIGN KEY (classe) REFERENCES gestionStock.ClasseMat(classe)
+);
+
+
