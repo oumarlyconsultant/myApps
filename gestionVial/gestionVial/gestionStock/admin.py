@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import ClasseMat,CategorieMat,Couleur,Fournisseur,Materiel,ClasseProd,CategorieProd,Dimension,Produit,Nomenclature
+from .models import ClasseMat,CategorieMat,Couleur,Ville,Fournisseur,Materiel,ClasseProd,CategorieProd,Dimension,Produit,Nomenclature
 
 # Register your models here.
 admin.site.register(ClasseMat)
 admin.site.register(CategorieMat)
 admin.site.register(Couleur)
+admin.site.register(Ville)
 admin.site.register(Fournisseur)
 admin.site.register(Materiel)
 admin.site.register(ClasseProd)

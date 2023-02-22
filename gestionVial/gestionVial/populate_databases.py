@@ -9,6 +9,7 @@ django.setup()
 
 import random
 from gestionStock.models import Dimension
+from gestionStock.models import Dimension
 
 import pandas as pd
 
