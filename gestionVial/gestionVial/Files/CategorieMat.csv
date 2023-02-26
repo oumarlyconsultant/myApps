@@ -1,10 +1,25 @@
-Categorie
-Chassis coulissant
-Chassis a frappe
-Murs rideaux
-Cloison
-Divers profiles
-Vitrage simple
-Vitrage double
-Accessoires
-"Confection, pose, silliconage"
+pk,classe_pk,categorie
+1,1,Chassis coulissant
+2,1,Chassis a frappe
+3,1,Murs rideaux
+4,5,Cloison
+5,1,Divers profiles
+6,2,Vitrage simple
+7,2,Vitrage feuillete
+8,2,Vitrage double
+9,3,Accessoires
+10,4,Fourniture et pose
+11,5,Films
+12,5,Bois melamine
+13,5,Panneaux composites
+14,5,Films reflectives
+15,5,Faux plafonds
+16,5,Couvre joint de dilatation
+17,5,Altuglas/Plexiglass
+18,5,Polycarbonate
+19,5,Abris auto
+20,5,Stop parking
+21,5,Faux planchers
+22,5,Gardes corps alu
+23,5,Gardes corps inox
+24,5,Brise soleil

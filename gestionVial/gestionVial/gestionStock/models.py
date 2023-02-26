@@ -1,6 +1,22 @@
 from django.db import models
 
 # Create your models here.
+class Pays(models.Model):
+    pays = models.CharField(max_length=50,blank=False,null=False)
+    abbrev = models.CharField(max_length=3,blank=True,null=True) 
+
+    def __str__(self):
+        return self.pays
+
+class Ville(models.Model):
+    ville = models.CharField(max_length=50,blank=False,null=False)
+    lat = models.FloatField(blank=True,null=True)  
+    lon = models.FloatField(blank=True,null=True)
+    pays = models.ForeignKey(Pays,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ville+" ("+self.pays.pays+")"
+
 #Materiel brut
 class ClasseMat(models.Model):
     classe = models.CharField(max_length=50,blank=False,null=False)
@@ -15,24 +31,14 @@ class CategorieMat(models.Model):
     classe = models.ForeignKey(ClasseMat,on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
-        return self.classe+" "+self.categorie
+        return self.categorie+"/ "+self.classe.classe
 
 class Couleur(models.Model):
-    nom = models.CharField(max_length=50,blank=False,null=False)
+    couleur = models.CharField(max_length=50,blank=False,null=False)
     info = models.CharField(max_length=200,blank=True,null=True)   
 
     def __str__(self):
-        return self.nom
-
-class Ville(models.Model):
-    ville = models.CharField(max_length=50,blank=False,null=False)
-    pays = models.CharField(max_length=50,blank=False,null=False)
-    lat = models.FloatField(blank=True,null=True)  
-    lon = models.FloatField(blank=True,null=True) 
-    abbrev = models.CharField(max_length=3,blank=True,null=True) 
-
-    def __str__(self):
-        return self.ville+" ("+self.pays+")"
+        return self.couleur
 
 class Fournisseur(models.Model):
     nom = models.CharField(max_length=50,blank=False,null=False)
@@ -56,12 +62,12 @@ class Materiel(models.Model):
     fabriquant = models.CharField(max_length=100,blank=True,null=True)
     info = models.CharField(max_length=200,blank=True,null=True)
 
-    characteristiques = models.ForeignKey(CategorieMat,on_delete=models.CASCADE,blank=True,null=True)
+    categorieMat = models.ForeignKey(CategorieMat,on_delete=models.CASCADE,blank=True,null=True)
     couleur = models.ForeignKey(Couleur,on_delete=models.RESTRICT,blank=True,null=True)
     fournisseur = models.ForeignKey(Fournisseur,on_delete=models.RESTRICT,blank=True,null=True)
 
     def __str__(self):
-        return self.designation+" "+self.characteristiques+" "+self.couleur
+        return self.designation+"/ "+self.categorieMat.categorie #+"/ "+self.couleur.couleur
 
 #Produit Fini
 class ClasseProd(models.Model):
