@@ -48,6 +48,8 @@ class Fournisseur(models.Model):
     personneRelation = models.CharField(max_length=100,blank=True,null=True)
     fournisseurFabriquant = models.BooleanField(default=False)
     ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,blank=True,null=True)
+    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,blank=True,null=True)
+
 
     def __str__(self):
         return self.nom
