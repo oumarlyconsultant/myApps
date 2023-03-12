@@ -27,6 +27,16 @@ class ClasseMat(models.Model):
     def __str__(self):
         return self.classe
 
+class Dimension(models.Model):
+    largeur = models.IntegerField(blank=False,null=False,default=0)
+    hauteur = models.IntegerField(blank=False,null=False,default=0)
+    profondeur = models.IntegerField(blank=True,null=True)
+    info = models.CharField(max_length=200,blank=True,null=True)
+
+
+    def __str__(self):
+        return str(self.largeur)+"x"+str(self.hauteur)
+    
 class Couleur(models.Model):
     couleur = models.CharField(max_length=50,blank=False,null=False)
     info = models.CharField(max_length=200,blank=True,null=True)   
@@ -51,7 +61,8 @@ class Fournisseur(models.Model):
 class Materiel(models.Model):
     reference = models.CharField(max_length=50,blank=True,null=True)
     designation = models.CharField(max_length=100,blank=True,null=True)
-    uniteDeQuantification = models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('n/a','pas applicable')),default='m')
+    uniteDeMesure= models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('n/a','pas applicable')),default='m')
+    uniteDeQuantification = models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('barre','barre 5,8m'),('n/a','pas applicable')),default='u')
     cout = models.FloatField(blank=False,null=False,default=10000)
     # prix = models.FloatField(blank=False,null=False,default=17000)
     fabriquant = models.CharField(max_length=100,blank=True,null=True)
@@ -59,21 +70,22 @@ class Materiel(models.Model):
 
     classe = models.ForeignKey(ClasseMat,on_delete=models.CASCADE,blank=True,null=True)
     couleur = models.ForeignKey(Couleur,on_delete=models.RESTRICT,blank=True,null=True)
+    dimension = models.ForeignKey(Dimension,on_delete=models.RESTRICT,blank=True,null=True)
     fournisseur = models.ForeignKey(Fournisseur,on_delete=models.RESTRICT,blank=True,null=True)
 
     def __str__(self):
         return self.designation+"/ "+self.classe.classe +"/ "+self.couleur.couleur
 
-class CoutPrixMat(models.Model):
-    prixRevient = models.FloatField(blank=False,null=False,default=1000)
-    prixVente = models.FloatField(blank=False,null=False,default=1700)
-    date = models.DateField(blank=False,null=False,default=timezone.now())
-    info = models.CharField(max_length=200,blank=True,null=True)
+# class CoutPrixMat(models.Model):
+#     prixRevient = models.FloatField(blank=False,null=False,default=1000)
+#     prixVente = models.FloatField(blank=False,null=False,default=1700)
+#     date = models.DateField(blank=False,null=False,default=timezone.now())
+#     info = models.CharField(max_length=200,blank=True,null=True)
 
-    materiel = models.ForeignKey(Materiel,on_delete=models.CASCADE,blank=True,null=True)
+#     materiel = models.ForeignKey(Materiel,on_delete=models.CASCADE,blank=True,null=True)
 
-    def __str__(self):
-        return self.materiel.designation+"/ "+str(self.prixRevient)+"/ "+str(self.date)
+#     def __str__(self):
+#         return self.materiel.designation+"/ "+str(self.prixRevient)+"/ "+str(self.date)
 
 #Produit Fini
 class ClasseProd(models.Model):
@@ -83,20 +95,11 @@ class ClasseProd(models.Model):
     def __str__(self):
         return self.classe
 
-class Dimension(models.Model):
-    largeur = models.IntegerField(blank=False,null=False,default=0)
-    hauteur = models.IntegerField(blank=False,null=False,default=0)
-    profondeur = models.IntegerField(blank=True,null=True)
-    info = models.CharField(max_length=200,blank=True,null=True)
-
-
-    def __str__(self):
-        return str(self.largeur)+"x"+str(self.hauteur)
-
 class Produit(models.Model):
     reference = models.CharField(max_length=50,blank=True,null=True)
     designation = models.CharField(max_length=100,blank=True,null=True)
-    uniteDeQuantification = models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('n/a','pas applicable')),default='u')
+    uniteDeMesure= models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('n/a','pas applicable')),default='m')
+    uniteDeQuantification = models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('barre','barre 5,8m'),('n/a','pas applicable')),default='u')
     # cout = models.FloatField(blank=False,null=False,default=10000)
     # prix = models.FloatField(blank=False,null=False,default=17000)
     info = models.CharField(max_length=200,blank=True,null=True)
@@ -104,12 +107,15 @@ class Produit(models.Model):
     classe = models.ForeignKey(ClasseProd,on_delete=models.CASCADE,blank=True,null=True)
     dimension = models.ForeignKey(Dimension,on_delete=models.RESTRICT,blank=True,null=True)
     couleur = models.ForeignKey(Couleur,on_delete=models.RESTRICT,blank=True,null=True)
-    # materiel = models.ManyToManyField(Materiel,through='Nomenclature')
+    materiel = models.ManyToManyField(Materiel,through='Nomenclature')
     
     def __str__(self):
         return self.designation+"/ "+self.classe.classe+"/ "+str(self.dimension.largeur)+"x"+str(self.dimension.hauteur)+"/ "+self.couleur.couleur
 
-# class Nomenclature(models.Model):
-#     materiel = models.ForeignKey(Materiel,on_delete=models.CASCADE)
-#     produit = models.ForeignKey(Produit,on_delete=models.CASCADE)
-#     quantiteMateriel = models.FloatField(blank=False,null=False,default=1)
+class Nomenclature(models.Model):
+    materiel = models.ForeignKey(Materiel,on_delete=models.CASCADE)
+    produit = models.ForeignKey(Produit,on_delete=models.CASCADE)
+    quantiteMateriel = models.FloatField(blank=False,null=False,default=0)
+
+    def __str__(self):
+        return self.produit.designation+"/ "+self.materiel.designation+"/ qte: "+str(self.quantiteMateriel)

@@ -8,7 +8,7 @@ import django
 django.setup()
 
 import random
-from gestionStock.models import ClasseMat, ClasseProd, Couleur, Dimension, Materiel, Produit, CoutPrixMat
+from gestionStock.models import ClasseMat, ClasseProd, Couleur, Dimension, Materiel, Produit, Nomenclature
 
 #Pays OK
 
@@ -80,6 +80,8 @@ def populate_materiel(file_name):
 
     designation = df['designation'].to_list()
 
+    uniteDeMesure = df['uniteDeMesure'].to_list()
+
     uniteDeQuantification = df['uniteDeQuantification'].to_list()
 
     # cout = df['cout'].to_list()
@@ -92,7 +94,7 @@ def populate_materiel(file_name):
 
     for i in range(len(pk)):
         # dimension = Ville.objects.get_or_create(pk = pk[i], pays_id = pays_pk[i], ville = ville[i], lat = lat[i], lon = lon[i])[0]
-        obj = Materiel.objects.get_or_create(pk = pk[i], classe_id = classe[i], couleur_id = couleur[i], reference = reference[i], designation = designation[i],
+        obj = Materiel.objects.get_or_create(pk = pk[i], classe_id = classe[i], couleur_id = couleur[i], reference = reference[i], designation = designation[i], uniteDeMesure = uniteDeMesure[i],
         uniteDeQuantification = uniteDeQuantification[i], fabriquant=fabriquant[i], info=info[i])[0]
 
 def populate_produit(file_name):
@@ -110,6 +112,8 @@ def populate_produit(file_name):
 
     designation = df['designation'].to_list()
 
+    uniteDeMesure = df['uniteDeMesure'].to_list()
+
     uniteDeQuantification = df['uniteDeQuantification'].to_list()
 
     # cout = df['cout'].to_list()
@@ -121,48 +125,45 @@ def populate_produit(file_name):
     for i in range(len(pk)):
         # dimension = Ville.objects.get_or_create(pk = pk[i], pays_id = pays_pk[i], ville = ville[i], lat = lat[i], lon = lon[i])[0]
         obj = Produit.objects.get_or_create(pk = pk[i], classe_id = classe[i], dimension_id=dimension[i], couleur_id = couleur[i], reference = reference[i], designation = designation[i],
-        uniteDeQuantification = uniteDeQuantification[i], info=info[i])[0]
+        uniteDeMesure=uniteDeMesure[i], uniteDeQuantification = uniteDeQuantification[i], info=info[i])[0]
 
-
-def populate_coutPrixMat(file_name):
+def populate_nomenclature(file_name):
     df = pd.read_csv(file_name,sep=",",header=0)
 
     pk = df['pk'].to_list()
 
+    produit = df['produit_pk'].to_list()
+
     materiel = df['materiel_pk'].to_list()
+    
+    quantiteMateriel = df['quantiteMateriel'].to_list()
 
-    # couleur = df['couleur_pk'].to_list()
-    # fournisseur = df['fournisseur_pk'].to_list()
+    # cout = df['cout'].to_list()
 
-    prixRevient = df['prixRevient'].to_list()
+    # prix = df['prix'].to_list()
 
-    prixVente = df['prixVente'].to_list()
-
-    date = df['date'].to_list()
-
-    info = df['info'].to_list()
+    # info = df['info'].to_list()
 
     for i in range(len(pk)):
         # dimension = Ville.objects.get_or_create(pk = pk[i], pays_id = pays_pk[i], ville = ville[i], lat = lat[i], lon = lon[i])[0]
-        obj = CoutPrixMat.objects.get_or_create(pk = pk[i], materiel_id = materiel[i], prixRevient = prixRevient[i], prixVente = prixVente[i],
-        date = date[i], info=info[i])[0]
+        obj = Nomenclature.objects.get_or_create(pk = pk[i], produit_id = produit[i], materiel_id=materiel[i],quantiteMateriel=quantiteMateriel[i])[0]
 
 
 if __name__ == '__main__':
     print("Populating the database...Please Wait")
     print('...classeMat')
-    populate_classeMat('Files/ClasseMat.csv')
+    populate_classeMat('Files/Dim_Tables/ClasseMat.csv')
     print('...classeProd')
-    populate_classeProd('Files/ClasseProd.csv')
+    populate_classeProd('Files/Dim_Tables/ClasseProd.csv')
     print('...dimension')
-    populate_dimension('Files/Dimension.csv')
+    populate_dimension('Files/Dim_Tables/Dimension.csv')
     print('...materiel')
-    populate_materiel('Files/Materiel.csv')
+    populate_materiel('Files/Dim_Tables/Materiel.csv')
     print('...produit')
-    populate_produit('Files/Produit.csv')    
-    print('...coutPrixMat')
-    populate_coutPrixMat('Files/CoutPrixMat.csv')  
-    print('Populating Complete')
+    populate_produit('Files/Dim_Tables/Produit.csv')    
+    print('...nomenclature')
+    populate_nomenclature('Files/Dim_Tables/Nomenclature.csv')  
+    print('Population Complete')
 
 
 # import pandas as pd
@@ -181,3 +182,26 @@ if __name__ == '__main__':
 #     print("Populating the database...Please Wait")
 #     populate('Files/Dimension.csv')
 #     print('Populating Complete')
+
+# def populate_coutPrixMat(file_name):
+#     df = pd.read_csv(file_name,sep=",",header=0)
+
+#     pk = df['pk'].to_list()
+
+#     materiel = df['materiel_pk'].to_list()
+
+    # couleur = df['couleur_pk'].to_list()
+    # fournisseur = df['fournisseur_pk'].to_list()
+
+    # prixRevient = df['prixRevient'].to_list()
+
+    # prixVente = df['prixVente'].to_list()
+
+    # date = df['date'].to_list()
+
+    # info = df['info'].to_list()
+
+    # for i in range(len(pk)):
+        # dimension = Ville.objects.get_or_create(pk = pk[i], pays_id = pays_pk[i], ville = ville[i], lat = lat[i], lon = lon[i])[0]
+        # obj = CoutPrixMat.objects.get_or_create(pk = pk[i], materiel_id = materiel[i], prixRevient = prixRevient[i], prixVente = prixVente[i],
+        # date = date[i], info=info[i])[0]
