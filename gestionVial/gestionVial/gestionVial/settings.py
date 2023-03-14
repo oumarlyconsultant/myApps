@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "gestionPersonnel",
 
     #additional apps from elsewhere
-    'betterforms',
+    # 'betterforms',
     # 'crispy_forms',
 ]
 

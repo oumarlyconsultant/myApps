@@ -1,6 +1,6 @@
 from django import forms
 from .models import Departement, Poste, EmployePoste, Employe, TermEmploi, TermPaie
-from betterforms.multiform import MultiModelForm
+# from betterforms.multiform import MultiModelForm
 
 class EmployeForm(forms.ModelForm):
     class Meta():
