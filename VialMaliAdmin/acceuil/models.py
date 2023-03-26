@@ -3,14 +3,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Date_Dim(models.Model):
-    pays = models.CharField(max_length=50,blank=False,null=False)
-    abbrev = models.CharField(max_length=3,blank=True,null=True) 
-
-    def __str__(self):
-        return self.pays
-    
-
 class Pays(models.Model):
     pays = models.CharField(max_length=50,blank=False,null=False)
     abbrev = models.CharField(max_length=3,blank=True,null=True) 
@@ -26,4 +18,5 @@ class Ville(models.Model):
     pays = models.ForeignKey(Pays,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.ville+" ("+self.pays.pays+")"
+        return self.ville
+    

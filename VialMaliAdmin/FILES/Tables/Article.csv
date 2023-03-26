@@ -1,0 +1,95 @@
+pk,reference,designation,uniteDeMesure,uniteDeQuantification,fabriquant,info,classe_pk,couleur_pk,dimension_pk
+1,,Porte 1 Battant OF VS,m2,u,,,1,999,23
+2,,Porte 1 Battant OF VS,m2,u,,,1,999,24
+3,,Porte 1 Battant OF VS,m2,u,,,1,999,37
+4,,Porte 1 Battant OF VS,m2,u,,,1,999,38
+5,,Porte 1 Battant OF VS,m2,u,,,1,999,51
+6,,Porte 1 Battant OF VS,m2,u,,,1,999,52
+7,,Porte 2 Battants OF VS,m2,u,,,1,999,79
+8,,Porte 2 Battants OF VS,m2,u,,,1,999,80
+9,,Porte 2 Battants OF VS,m2,u,,,1,999,93
+10,,Porte 2 Battants OF VS,m2,u,,,1,999,94
+11,,Porte 2 Battants OF VS,m2,u,,,1,999,107
+12,,Porte 2 Battants OF VS,m2,u,,,1,999,108
+13,,Porte 2 Battants OF VS,m2,u,,,1,999,121
+14,,Porte 2 Battants OF VS,m2,u,,,1,999,122
+15,,Porte Coulissante VS,m2,u,,,1,999,93
+16,,Porte Coulissante VS,m2,u,,,1,999,107
+17,,Porte Coulissante VS,m2,u,,,1,999,121
+18,,Porte Coulissante VS,m2,u,,,1,999,135
+19,,Porte Coulissante VS,m2,u,,,1,999,149
+20,,Porte Coulissante VS,m2,u,,,1,999,163
+21,,Porte Coulissante VS,m2,u,,,1,999,177
+22,,Porte Coulissante VS,m2,u,,,1,999,191
+23,,Porte Coulissante VS,m2,u,,,1,999,205
+24,,Porte Coulissante VS,m2,u,,,1,999,219
+25,,Fenetre Coulissante VS,m2,u,,,2,999,1
+26,,Fenetre Coulissante VS,m2,u,,,2,999,30
+27,,Fenetre Coulissante VS,m2,u,,,2,999,1
+28,,Fenetre Coulissante VS,m2,u,,,2,999,30
+29,,Fenetre Coulissante VS,m2,u,,,2,999,73
+30,,Fenetre Coulissante VS,m2,u,,,2,999,74
+31,,Fenetre Coulissante VS,m2,u,,,2,999,87
+32,,Fenetre Coulissante VS,m2,u,,,2,999,88
+33,,Fenetre Coulissante VS,m2,u,,,2,999,101
+34,,Fenetre Coulissante VS,m2,u,,,2,999,102
+35,,Fenetre Coulissante VS,m2,u,,,2,999,115
+36,,Fenetre Coulissante VS,m2,u,,,2,999,116
+37,,Fenetre Coulissante VS,m2,u,,,2,999,129
+38,,Fenetre Coulissante VS,m2,u,,,2,999,130
+39,VMC 1010,Rail coulissant,m,barre,,,17,999,999
+40,VMC 1011,Extremite coulissant,m,barre,,,17,999,999
+41,VMC 1012,Croisement coulissant,m,barre,,,17,999,999
+42,VMC 1013,Traverse coulissant,m,barre,,,17,999,999
+43,VMC 1014,Reducteur de feuillure,m,barre,,,17,999,999
+44,VMC 1015,Chicane,m,barre,,,17,999,999
+45,VMC 1016,Couvre joint,m,barre,,,17,999,999
+46,VMC 1017,Traverse coulissant intermediare,m,barre,,,17,999,999
+47,VMC 1018,Rails moustiquaires,m,barre,,,17,999,999
+48,VMC 1019,Ouvrant moustiquaire ,m,barre,,,17,999,999
+49,VMP 1110,Cadre dormant,m,barre,,,17,999,999
+50,VMP 1112,Battant ouvrant,m,barre,,,17,999,999
+51,VMP 1113,Traverse intermediare,m,barre,,,17,999,999
+52,VMP 1114,Parclose ,m,barre,,,17,999,999
+53,VMP 1115,Intermediare  deux vantaux,m,barre,,,17,999,999
+54,VMP 1116,Pleinthe basse,m,barre,,,17,999,999
+55,VMP 1117,Seuil de porte,m,barre,,,17,999,999
+56,VMP 1118,Jet d eau,m,barre,,,17,999,999
+57,VMP 1119,Ballaie,m,barre,,,17,999,999
+58,VMP 1120,Couvre joint,m,barre,,,17,999,999
+59,VM MR 1210,Meneau poteau,m,barre,,,17,999,999
+60,VM MR 1211,Meneau traverse,m,barre,,,17,999,999
+61,VM MR 1212,Serreur,m,barre,,,17,999,999
+62,VM MR 1214,Capot,m,barre,,,17,999,999
+63,VM MR 1215,Eclisse,m,barre,,,17,999,999
+64,VM MR 1216,Cadre VEC,m,barre,,,17,999,999
+65,VM MR 1217,Cadre VEP,m,barre,,,17,999,999
+66,VM MR 1218,Profiles ouvrant cache,m,barre,,,17,999,999
+67,VM CL 1310,Profile de structure ,m,barre,,,17,999,999
+68,VM CL 1311,Montant cloison,m,barre,,,17,999,999
+69,VM CL 1312,Ecarteur ,m,barre,,,17,999,999
+70,VM CL 1313,Lisse hausse ou basse,m,barre,,,17,999,999
+71,VM CL 1314 ,Intercalaire double vitrage ,m,barre,,,17,999,999
+72,VM CL 1315,Intercalaire simple  vitrage ,m,barre,,,17,999,999
+73,VM CL 1315,Profiles pour passage libre,m,barre,,,17,999,999
+74,VM CL 1316,Cache plat,m,barre,,,17,999,999
+75,VM CL 1317,Cache bombe,m,barre,,,17,999,999
+76,VM CL 1318 ,Dormant de porte ,m,barre,,,17,999,999
+77,VM DVS 1410,Corniere  40X40,m,barre,,,17,999,999
+78,VM DVS 1411,Tube Carre  40X40,m,barre,,,17,999,999
+79,VM ACP 1510,Kit serrure complet 1 bt,u,u,,,20,999,999
+80,VM AC 1511,Vis complet 1 bt,u,u,,,20,999,999
+81,VM AC 1512,Ens joint complet 1bt,u,u,,,20,999,999
+82,VM AC 1513,Equerre 1 bt,u,u,,,20,999,999
+83,VM AC 1514,Pommelle 1 bt,u,u,,,20,999,999
+84,VM AC 1515,Ensemble piece de finition,u,u,,,20,999,999
+85,VM ACF 1610,Verroux FC,u,u,,,20,999,999
+86,VM ACF 1611,Roulettes FC,u,u,,,20,999,999
+87,VM ACF 1612,Equerre FC,u,u,,,20,999,999
+88,VM ACF 1613,Vis complet FC,u,u,,,20,999,999
+89,VM ACF 1614,Ensemble joint et brosse FC,u,u,,,20,999,999
+90,VM ACF 1615,Ensemble kit de finition,u,u,,,20,999,999
+91,VM VS 1710,Vitrage des chassis simple,m2,m2,,,19,999,999
+92,VM VF 1711,Vitrage des chassis en feuillete ,m2,m2,,,19,999,999
+93,VM VD 1712,Vitrage des chassis double,m2,m2,,,19,999,999
+94,VM  CP 1713,"Confection, pose et siliconnage",m2,m2,,,19,999,999
