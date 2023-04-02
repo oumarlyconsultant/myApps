@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+<div id="acceuil" style="width: 925px;">
+    <div class="container" style="margin-left: 0;margin-right: 0;padding-right: 0px;padding-top: 0px;margin-bottom: 55px;padding-bottom: 189px;padding-left: 0px;">
+        <div class="p-5 mb-4 round-3">
+            <div class="container-fluid bg-white py-5" style="padding: 0px;margin-top: -40px;padding-left: 0px;width: 885px;padding-right: 56px;margin-left: -29px;height: 391.391px;">
+                <div class="row">
+                    <div class="col" style="padding-right: 0px;padding-left: 23px;margin-left: 19px;">
+                        <h1 class="display-6 fs-3 text-start fw-bold">Bienvenue dans l'application <span style="color: rgb(43, 11, 239); background-color: rgb(255, 255, 255);">Vial-Mali Admin</span></h1>
+                        <p class="col-md-8 fs-4" style="margin: 0px;margin-right: 0px;margin-top: 25px;width: 700px;">Cette application permet de gerer les activites administratives et operationnelles de la Vial-Mali telles que la gestion de l'inventaire et stock, les ventes et le personnel.</p>
+                        <hr>
+                        <p>Veuillez selectionner un des modules ci-dessous pour commencer</p>
+                        <div class="btn-group" role="group" style="margin: 0px;margin-top: 5px;"></div>
+                        <div class="row" style="margin: -10px;margin-right: -33px;padding-right: 5px;width: 781px;">
+                            <div class="col" style="width: 200px;"><a href="{% url 'ventes:index' %}" class="btn btn-primary btn-lg" type="button" style="width: 169px;font-size: 15px;">Ventes</a></div>
+                            <div class="col"><a href="{% url 'inventaires_et_stock:index' %}" class="btn btn-primary btn-lg" type="button" style="width: 169px;font-size: 15px;">Inventaires et stock</a></div>
+                            <div class="col"><a href="{% url 'personnel:index' %}" class="btn btn-primary btn-lg" type="button" style="width: 169px;font-size: 15px;">Personnel</a></div>
+                            <div class="col" style="margin-left: -4px;width: 200px;"><button class="btn btn-danger btn-lg" type="button" style="width: 169px;font-size: 15px;">Tableaux de bords</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
