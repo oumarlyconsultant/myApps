@@ -1,0 +1,19 @@
+{% include 'ventes_clients.html' %}
+
+{% block pagecontent3 %}
+<div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h1 class="display-4">
+        Information sur le client: {{ object.prenom }} {{ object.nom }} - {{ nomEntreprise }}
+    </h1>
+    <p></p>
+    <p>Prenom: {{ object.prenom }}</p>
+    <p>Nom: {{ object.nom }}</p>
+    <p>Nom de l'entreprise: {{ object.nomEntreprise }}</p>
+    <p>Adresse: {{ object.adresse }}</p>
+    <p>Telephone: {{ object.telephone }}</p>
+    <p>Email: {{ object.email }}</p>    
+    <p>Ville: {{ object.ville }}<p>
+    <p>Pays: {{ object.pays }}</p>
+    <p>Autres informations: {{ object.info }}</p>
+</div>
+{% endblock %} 

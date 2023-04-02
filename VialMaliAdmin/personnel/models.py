@@ -27,7 +27,7 @@ class Employe(models.Model):
     nom = models.CharField(max_length=50)
     dateNaissance = models.DateField(default='1991-01-01')
     sexe = models.CharField(max_length=1,choices=(('H','HOMME'),('F','FEMME')))
-    adresseDomicile = models.CharField(max_length=100)
+    adresseDomicile = models.CharField(max_length=100,default="Bamako")
     telephone = models.CharField(max_length=50,blank=False,null=False)
     email = models.EmailField(blank=True,null=True)
     dateEmbauche = models.DateField(blank=False,null=False,default='1991-01-01')

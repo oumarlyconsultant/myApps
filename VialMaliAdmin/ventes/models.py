@@ -3,7 +3,7 @@ from django.db import models
 from acceuil.models import Pays, Ville
 from inventaires_et_stock.models import Article
 from personnel.models import Employe
-
+from django.urls import reverse
 from django.utils import timezone
 
 # Create your models here.
@@ -19,8 +19,12 @@ class Client(models.Model):
     ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,blank=True,null=True,default=22187)
     pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,blank=True,null=True,default=127)
 
+    def get_absolute_url(self): #go back to this post
+        # return reverse("gestionPersonnel:details",kwargs={'pk':self.numeroEmploye})
+        return reverse("ventes:clientsDetails",kwargs={'pk':self.id})
+
     def __str__(self):
-        return self.prenom+" "+self.nom+" "+self.nomEntreprise
+        return self.prenom+" "+self.nom+" "+str(self.nomEntreprise)
 
 class Devis(models.Model):
     date = models.DateField(default=timezone.now())

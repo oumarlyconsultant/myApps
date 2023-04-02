@@ -1,0 +1,17 @@
+{% include 'ventes_clients.html' %}
+
+{% block pagecontent3 %}
+<div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h1 class="display-4">
+        Repertoire des clients
+    </h1>
+    <p></p>
+    <ul>
+        {% for clients in object_list %}
+            <li><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.prenom }} {{ clients.nom }} - {{ clients.nomEntreprise }}</a></li>
+        {% empty %}
+            <li>Pas de client enregistre</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %} 

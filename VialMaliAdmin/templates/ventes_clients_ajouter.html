@@ -1,0 +1,16 @@
+{% include 'ventes_clients.html' %}
+
+{% block pagecontent3 %}
+<div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h1 class="display-4">
+        Ajouter nouveau client
+    </h1>
+    <p></p>
+    <form method="POST">
+        {% csrf_token %}    
+        {{ form.as_p }}
+        <input type="submit" value="Soumettre" class="btn btn-primary btn-lg"> &nbsp;
+        <input type="submit" value="Annuler" name="annuler" class="btn btn-warning btn-lg"> 
+    </form>
+</div>
+{% endblock %} 
