@@ -1,6 +1,15 @@
 {% include 'ventes_clients.html' %}
 
 {% block pagecontent3 %}
+{% if messages %}
+<div class="container" id="ajout_client_success">
+    <div id="ajout_client_success" class="alert alert-success">
+        {% for message in messages %}
+            {{ message }} </br>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 <div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
     <h1 class="display-4">
         Repertoire des clients
