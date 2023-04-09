@@ -7,4 +7,4 @@ from django.views.generic import View, ListView, DetailView, CreateView, UpdateV
 # from . import models
 
 class index(TemplateView):
-    template_name = "personnel.html"
+    template_name = "./personnel/personnel.html"

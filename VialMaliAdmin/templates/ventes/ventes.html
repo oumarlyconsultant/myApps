@@ -1,0 +1,19 @@
+{% extends '../acceuil/base.html' %}
+
+{% block pagecontent %}
+<div id="ventes" style="margin-left: 250px;">
+    <nav class="navbar navbar-light navbar-expand-md shadow p-3 mb-5 bg-light rounded" >
+        <div class="container-fluid"><a class="navbar-brand" href="{% url 'ventes:index' %}"><strong>Ventes</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <table class="navbar-nav">
+                    <tr>
+                        <td><a class="nav-link" href="{% url 'ventes:devisIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Devis et factures</button></a></td>
+                        <td><a class="nav-link" href="{% url 'ventes:clientsIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Clients</button></a></td>
+                        <td><a class="nav-link" href="#"><button type="button" class="btn btn-outline-secondary rounded-pill">Rapports</button></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </nav>
+</div>
+{% endblock %} 

@@ -1,10 +1,12 @@
-{% include 'ventes_clients.html' %}
+{% include './ventes_clients.html' %}
 
 {% block pagecontent3 %}
 <div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h3></h3>
     <h1 class="display-4">
-        Information sur le client: {{ object.prenom }} {{ object.nom }} - {{ nomEntreprise }}
+        Information sur le client: {{success}} {{ object.prenom }} {{ object.nom }} - {{ nomEntreprise }}
     </h1>
+    <hr>
     <p></p>
     <p>Prenom: {{ object.prenom }}</p>
     <p>Nom: {{ object.nom }}</p>
@@ -15,5 +17,9 @@
     <p>Ville: {{ object.ville }}<p>
     <p>Pays: {{ object.pays }}</p>
     <p>Autres informations: {{ object.info }}</p>
+
+    <hr>
+    <a href="{% url 'ventes:clientsModifier' pk=object.id %}" class="btn btn-warning btn-lg" type="button">Modifier Infos</a>
+    <a href="{% url 'ventes:clientsSupprimer' pk=object.id %}" class="btn btn-danger btn-lg" type="button">Supprimer</a>
 </div>
 {% endblock %} 

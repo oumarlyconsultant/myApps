@@ -4,7 +4,7 @@ from django.db import models
 
 class Classe(models.Model):
     classe = models.CharField(max_length=50,blank=False,null=False)
-    indProduitFini = models.BooleanField(blank=False,null=False)
+    indFabricationReq = models.BooleanField(blank=False,null=False,default=0)
     info = models.CharField(max_length=200,blank=True,null=True)
 
     def __str__(self):

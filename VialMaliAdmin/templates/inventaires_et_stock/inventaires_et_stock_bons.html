@@ -1,0 +1,22 @@
+{% include './inventaires_et_stock.html' %}
+
+{% block pagecontent2 %}
+<div id="clients" style="margin-left: 250px;">
+    <nav id="clients" class="navbar navbar-light navbar-expand-md bg-light shadow p-3 mb-5"style="margin-top: -50px">
+        <div class="container-fluid"><a class="navbar-brand" href="{% url 'ventes:clientsIndex' %}"><strong>Bons de commande</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <table class="navbar-nav">
+                    <tr>
+                        <td><a class="nav-link" href="{% url 'ventes:clientsAjouter' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Consulter le stock</button></a></td>
+                        <td><a class="nav-link" href="{% url 'ventes:clientsRepertoire' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Repertoire des clients</button></a></td>
+                        <td><a class="nav-link" href="{% url 'ventes:clientsRepertoire' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Repertoire des clients</button></a></td>
+                        <td><a class="nav-link" href="{% url 'ventes:clientsRepertoire' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Repertoire des clients</button></a></td>
+
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </nav>
+</div>
+{% endblock %} 

@@ -4,4 +4,4 @@ from django.http import Http404
 
 # Create your views here.
 def acceuil(request):
-    return render(request,"acceuil.html",{})
+    return render(request,"./acceuil/acceuil.html",{})

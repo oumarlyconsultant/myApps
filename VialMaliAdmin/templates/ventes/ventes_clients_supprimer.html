@@ -1,0 +1,16 @@
+{% include './ventes_clients.html' %}
+
+{% block pagecontent3 %}
+<div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h3></h3>
+    <h1 class="display-4">
+        Voulez-vous vraiment supprimer le client: <a style="color:rgb(185, 40, 40);">{{ object.prenom }} {{ object.nom }} - {{ nomEntreprise }}</a>?
+    </h1>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}  
+        <input type="submit" value="Confirmer" class="btn btn-danger btn-lg"> &nbsp;
+        <a type="button" href="{% url 'ventes:clientsDetails' pk=object.id %}" class="btn btn-outline-secondary btn-lg">Annuler</a>
+    </form>
+</div>
+{% endblock %} 

@@ -1,0 +1,18 @@
+{% include './ventes_clients.html' %}
+
+{% block pagecontent3 %}
+<div id="clients_ajouter" class="container bg-white p-5" style="margin-left: 300px; margin-top: -50px;">
+    <h1 class="display-4">
+        Enregister nouveau client
+    </h1>
+    <p class="lead">Veuillez remplir le formulaire ci-dessous:</p>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}    
+        {{ form.as_p }}
+        <hr>
+        <input type="submit" value="Ajouter nouveau client" class="btn btn-primary btn-lg"> &nbsp;
+        <a type="button" href="{% url 'ventes:clientsRepertoire' %}" class="btn btn-outline-secondary btn-lg">Annuler</a>
+    </form>
+</div>
+{% endblock %} 

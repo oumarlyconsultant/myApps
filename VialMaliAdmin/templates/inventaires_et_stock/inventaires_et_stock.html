@@ -1,0 +1,20 @@
+{% extends '../acceuil/base.html' %}
+
+{% block pagecontent %}
+<div id="ventes" style="margin-left: 250px;">
+    <nav class="navbar navbar-light navbar-expand-md shadow p-3 mb-5 bg-light rounded" >
+        <div class="container-fluid"><a class="navbar-brand" href="{% url 'inventaires_et_stock:index' %}"><strong>Inventaires et stock</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <table class="navbar-nav">
+                    <tr>
+                        <td><a class="nav-link" href="{% url 'inventaires_et_stock:consulter_stockIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Consulter le stock</button></a></td>
+                        <td><a class="nav-link" href="{% url 'inventaires_et_stock:bons_de_commandeIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Bons de commande</button></a></td>
+                        <td><a class="nav-link" href="{% url 'inventaires_et_stock:approvisionnementsIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Approvisionnements</button></a></td>
+                        <td><a class="nav-link" href="{% url 'inventaires_et_stock:articlesIndex' %}"><button type="button" class="btn btn-outline-secondary rounded-pill">Articles</button></a></td>
+                       </tr>
+                </table>
+            </div>
+        </div>
+    </nav>
+</div>
+{% endblock %} 
