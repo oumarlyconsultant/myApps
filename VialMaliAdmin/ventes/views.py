@@ -16,7 +16,11 @@ class index(TemplateView):
 
 class clientsIndex(TemplateView):
     template_name = "./ventes/ventes_clients.html"
-   
+
+class clientsListe(ListView):
+    model = models.Client
+    template_name = "./ventes/ventes_clients_liste.html"
+
 class clientsDetails(DetailView):
     model = models.Client
     template_name = "./ventes/ventes_clients_details.html"
@@ -63,13 +67,19 @@ class clientsAjouter(CreateView):
     #     else:
     #         return super(clientsAjouter,self).post(request,*args,**kwargs)
 
-def clientsListeRecherche(request):
+def clientsRepertoire(request):
     # print(request.GET)
     # print(dir(request))
     query_dict = request.GET
-    query = query_dict.get("q")
-    if query is not None:
-        object_list = models.Client.objects.filter(prenom__contains=query) | models.Client.objects.filter(nom__contains=query) | models.Client.objects.filter(nomEntreprise__contains=query)
+    query = query_dict.get("valeur_recherchee")
+    button1 = query_dict.get("recherche")
+    button2 = query_dict.get("liste")
+    context = {
+        "button":0,
+        "objects":[]
+    }
+    if button1 and query is not None:
+        object_list = models.Client.objects.filter(prenom__icontains=query) | models.Client.objects.filter(nom__icontains=query) | models.Client.objects.filter(nomEntreprise__icontains=query)
         # if object_list.count() > 10:
         #     page_number = request.GET.get('page')
         #     paginator = Paginator(object_list,10)
@@ -77,13 +87,30 @@ def clientsListeRecherche(request):
         # else:
         #     page_obj = 1
         context = {
+            "button":1,
             "query":query,
             "objects":object_list,
             # "page_obj":page_obj,
         }
 
-    else:
-        context = {}
+    elif button1:
+        context = {
+            "button":1,
+            "query":query,
+            "objects":[],
+        }
+    elif button2:
+        object_list = models.Client.objects.all().order_by('prenom')
+        # if object_list.count() > 10:
+        #     page_number = request.GET.get('page')
+        #     paginator = Paginator(object_list,10)
+        #     page_obj = paginator.get_page(page_number)
+        # else:
+        #     page_obj = 1
+        context = {
+            "button":2,
+            "objects":object_list,
+        }
     template_name = "./ventes/ventes_clients_repertoire.html"
     return render(request,template_name,context=context)
 

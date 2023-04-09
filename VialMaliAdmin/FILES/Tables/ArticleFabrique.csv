@@ -1,0 +1,39 @@
+pk,reference,designation,uniteDeMesure,uniteDeQuantification,prixDeRevient,prixDeVente,fabriquant,info,classe_pk,couleur_pk,dimension_pk
+1,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,23
+2,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,24
+3,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,37
+4,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,38
+5,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,51
+6,POF1VS,Porte 1 Battant OF VS,m2,u,,,,,1,999,52
+7,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,79
+8,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,80
+9,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,93
+10,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,94
+11,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,107
+12,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,108
+13,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,121
+14,POF2VS,Porte 2 Battants OF VS,m2,u,,,,,1,999,122
+15,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,93
+16,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,107
+17,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,121
+18,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,135
+19,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,149
+20,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,163
+21,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,177
+22,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,191
+23,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,205
+24,PCVS,Porte Coulissante VS,m2,u,,,,,1,999,219
+25,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,1
+26,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,30
+27,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,1
+28,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,30
+29,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,73
+30,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,74
+31,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,87
+32,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,88
+33,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,101
+34,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,102
+35,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,115
+36,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,116
+37,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,129
+38,FCVS,Fenetre Coulissante VS,m2,u,,,,,2,999,130

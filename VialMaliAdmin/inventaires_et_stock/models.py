@@ -22,6 +22,7 @@ class Dimension(models.Model):
     largeur = models.IntegerField(blank=False,null=False)
     hauteur = models.IntegerField(blank=False,null=False)
     epaisseur = models.IntegerField(blank=True,null=True)
+    volume = models.IntegerField(blank=True,null=True)
     # info = models.CharField(max_length=200,blank=True,null=True)
 
     def __str__(self):
@@ -32,23 +33,28 @@ class Article(models.Model):
     designation = models.CharField(max_length=100,blank=False,null=False)
     uniteDeMesure= models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('n/a','non-applicable')),default='m')
     uniteDeQuantification = models.CharField(max_length=50,choices=(('u','unite'),('m','metre lineaire'),('m2','metre carre'),('m3','metre cube'),('barre','barre 5,8m'),('n/a','non-applicable')),default='u')
+    prixDeRevient = models.FloatField(blank=True,null=True)
+    prixDeVente = models.FloatField(blank=True,null=True)
     fabriquant = models.CharField(max_length=100,blank=True,null=True)
     info = models.CharField(max_length=200,blank=True,null=True)
 
     classe = models.ForeignKey(Classe,on_delete=models.CASCADE,blank=False,null=False)
     couleur = models.ForeignKey(Couleur,on_delete=models.RESTRICT,blank=False,null=False)
     dimension = models.ForeignKey(Dimension,on_delete=models.RESTRICT,blank=False,null=False)
+    articleFabrique = models.ManyToManyField('self',through='Nomenclature',symmetrical=False)
 
     def __str__(self):
         return self.designation
 
-# class Nomenclature(models.Model):
-#     produitBrut = models.ForeignKey(Article,on_delete=models.CASCADE)
-#     produitFini = models.ForeignKey(Article,on_delete=models.CASCADE,related_name='produitFini')
-#     quantiteProduitBrut = models.FloatField(blank=False,null=False,default=0)
+class Nomenclature(models.Model):
+    articleFabrique = mo
+    qtiteArticleBrutReq = models.IntegerField(default=0)
+    produitBrut = models.ForeignKey(Article,on_delete=models.CASCADE)
+    produitFini = models.ForeignKey(Article,on_delete=models.CASCADE,related_name='produitFini')
+    quantiteProduitBrut = models.FloatField(blank=False,null=False,default=0)
 
-#     def __str__(self):
-#         return self.produitFini.designation+"/ "+self.produitBrut.designation+"/ qte: "+str(self.quantiteProduitBrut)
+    def __str__(self):
+        return self.produitFini.designation+"/ "+self.produitBrut.designation+"/ qte: "+str(self.quantiteProduitBrut)
     
 # class CoutPrixMat(models.Model):
 #     prixRevient = models.FloatField(blank=False,null=False,default=1000)

@@ -1,4 +1,4 @@
-pk,produit_pk,materiel_pk,quantiteMateriel
+pk,articleFabrique_pk,articleFini_pk,quantiteArticleFini
 1,1,11,5.1
 2,1,12,5.1
 3,1,13,0.7

@@ -15,28 +15,13 @@
         Repertoire des clients
     </h1>
     <p></p>
-    <p></p>
-    <!-- <form class="form-inline" action="{}" method="GET">
-        {{form}}
-        <button type="submit" class="btn btn-warning btn-sm" name="q">Rechercher</button>
-        </fieldset>
-        &nbsp; -->
-        <!-- <button type="submit" class="btn btn-secondary btn-sm" name="liste" margin-right="-10px">Liste de tous les clients</button> -->
-    <!-- </form>
-    <hr>
-    <ul>
-        {% for clients in object_list %}
-            <li><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.prenom }} {{ clients.nom }} - {{ clients.nomEntreprise }}</a></li>
-        {% empty %}
-            <li>Pas de client enregistre</li>
-        {% endfor %}
-    </ul> -->
     <form action="" method="GET">
-        <input type="search" placeholder="Entre nom du client ou de l'entreprise" name="q" size="50px"/>
-        <input type="submit" value="Rechercher" class="btn btn-success btn-sm">
+        <input type="search" placeholder="Entre nom du client ou de l'entreprise" name="valeur_recherchee" size="50px"/>
+        <input type="submit" value="Rechercher" name="recherche" class="btn btn-success btn-sm"/>
+        <input type="submit" class="btn btn-secondary btn-sm" name="liste" value="Liste de tous les clients"/>
     </form>
     <hr>
-    {% if objects %}
+    {% if button == 1 and objects %}
     <p class="lead">Liste des clients retrouves avec nom ou nom d'entreprise "{{query}}":</p>
         
         <table class="table table-striped">
@@ -47,13 +32,28 @@
             {% for clients in objects %}
             <tr>
                 <td><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.prenom }} {{ clients.nom }}</a></td>
-                <td>{{ clients.nomEntreprise }}</td>
+                <td><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.nomEntreprise }}</a></td>
             </tr>
         
             {% endfor %}
         </table>
-    {% elif query %}
-    <p class="lead">Pas de client avec nom ou nom d'entreprise <em>"{{query}}"</em>. Veuillez revisiter vos parametres de recherche.</p>     
+    {%  elif button == 1 %}
+    <p class="lead">Pas de client avec nom ou nom d'entreprise <em>"{{query}}"</em>. Veuillez revisiter vos parametres de recherche.</p> 
+    {%  elif button == 2 %}
+    <p class="lead">Liste de tous les clients:</p>
+        
+    <table class="table table-striped">
+        <tr>
+            <th>Nom client</th>
+            <th>Entreprise</th>
+        </tr>
+        {% for clients in objects %}
+        <tr>
+            <td><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.prenom }} {{ clients.nom }}</a></td>
+            <td><a href="{% url 'ventes:clientsDetails' pk=clients.id%}" style="font-size: larger;">{{ clients.nomEntreprise }}</a></td>
+        </tr>
+    
+        {% endfor %}
     {% endif %}
 </div>
 {% endblock %} 
