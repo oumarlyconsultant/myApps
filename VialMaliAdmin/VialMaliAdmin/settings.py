@@ -15,9 +15,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-STATIC_DIR = os.path.join(BASE_DIR,'templates/assets')
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'frontend/templates')
+STATIC_DIR = os.path.join(BASE_DIR,'frontend/static')
+# MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 
 
@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "acceuil",
-    "ventes",
-    "inventaires_et_stock",
-    "personnel",
+    "rest_framework",
+    "api",
+    # "acceuil",
+    # "ventes",
+    # "inventaires_et_stock",
+    # "personnel",
+    "frontend",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +66,8 @@ ROOT_URLCONF = "VialMaliAdmin.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [TEMPLATE_DIR,],
+        "DIRS": [],
+        # [TEMPLATE_DIR,],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,7 +89,7 @@ WSGI_APPLICATION = "VialMaliAdmin.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",# change - oumar 25/03/2023
-        "NAME": "VialMaliAdminDB",
+        "NAME": "VMA_DB",
         "USER": "oumar",
         'PASSWORD': '667290lY',
         'HOST': '127.0.0.1',
@@ -122,15 +126,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "templates/assets/"
+STATIC_URL = "frontend/static/"
 
 STATICFILES_DIRS = [
-    STATIC_DIR, #Added by OL
+    STATIC_DIR,
 ]
 
 #MEDIA (to store user media) -- Added by OL
-MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = 'media/'
+# MEDIA_ROOT = MEDIA_DIR
+# MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
