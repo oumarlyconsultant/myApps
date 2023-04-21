@@ -41,11 +41,11 @@ class Terrain(models.Model):
     methodePaiment2 = models.CharField(max_length=1,blank=True,null=True,choices=(('C','COMPTANT'),('O','ORANGE MONEY')))
     type = models.CharField(max_length=2,choices=(('GR','GRAVIER'),('GA','GAZON'),('SY','SYNTHETIQUE'),('SA','SABLE')),default='GR')
     indStanding = models.BooleanField(default=False)
-    photo1 = models.ImageField(upload_to="terrains",blank=True,null=True) #Change After
-    photo2 = models.ImageField(upload_to="terrains",blank=True,null=True)
-    photo3 = models.ImageField(upload_to="terrains",blank=True,null=True)
-    photo4 = models.ImageField(upload_to="terrains",blank=True,null=True)
-    photo5 = models.ImageField(upload_to="terrains",blank=True,null=True)
+    photo1 = models.ImageField(upload_to="terrains/",blank=True,null=True) #Change After
+    photo2 = models.ImageField(upload_to="terrains/",blank=True,null=True)
+    photo3 = models.ImageField(upload_to="terrains/",blank=True,null=True)
+    photo4 = models.ImageField(upload_to="terrains/",blank=True,null=True)
+    photo5 = models.ImageField(upload_to="terrains/",blank=True,null=True)
     indTerrainValide = models.BooleanField(default=False)
     dateCreation = models.DateTimeField(auto_now_add=True)
     dateMisAJour = models.DateTimeField(auto_now=True)
@@ -53,22 +53,6 @@ class Terrain(models.Model):
     def __str__(self):
         return self.nom 
     
-class Client(models.Model):
-    nC = models.UUIDField(primary_key = True, default=uuid.uuid4,editable=False)
-    prenom = models.CharField(max_length=50)
-    nom = models.CharField(max_length=50)
-    dateNaissance = models.DateField(blank=True,null=True)
-    sexe = models.CharField(max_length=1,choices=(('H','HOMME'),('F','FEMME')),default='H')
-    numeroTel1 = models.CharField(max_length=20)
-    numeroTel2 = models.CharField(max_length=20,blank=True,null=True)
-    email = models.EmailField(blank=True,null=True)
-    indAvecCompte = models.BooleanField(default=False)
-    dateCreation = models.DateTimeField(auto_now_add=True)
-    dateMisAJour = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.prenom+" "+self.nom   
-
 class DateDim(models.Model):
     date = models.DateField()
     semaineDebutDate = models.DateField()
@@ -107,12 +91,26 @@ class Disponibilite(models.Model):
     def __str__(self):
         return str(self.calendrier)+" "+str(self.indDisponible)
 
+class Client(models.Model):
+    nC = models.UUIDField(primary_key = True, default=uuid.uuid4,editable=False)
+    prenom = models.CharField(max_length=50)
+    nom = models.CharField(max_length=50)
+    dateNaissance = models.DateField(blank=True,null=True)
+    sexe = models.CharField(max_length=1,choices=(('H','HOMME'),('F','FEMME')),default='H')
+    numeroTel1 = models.CharField(max_length=20)
+    numeroTel2 = models.CharField(max_length=20,blank=True,null=True)
+    email = models.EmailField(blank=True,null=True)
+    indAvecCompte = models.BooleanField(default=False)
+    dateCreation = models.DateTimeField(auto_now_add=True)
+    dateMisAJour = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.prenom+" "+self.nom   
+        
 class Reservation(models.Model):
     disponibilite = models.ForeignKey(Disponibilite,on_delete=models.CASCADE)
     client = models.ForeignKey(Client,on_delete=models.CASCADE)
 
-    def reserver(self):
-        if client
     def __str__(self):
         return str(self.disponibilite.calendrier)+" "+str(self.client)
 
