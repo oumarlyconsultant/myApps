@@ -1,9 +1,12 @@
 import React from "react";
+import Navbar from "./Navbar";
+import Content from "./Content";
 
 function App(){
     return(
         <div>
-            <h1>All good!</h1>
+            <Navbar menu1="Acceuil" menu2="Espace proprietaire" menu3="Espace joueur" />
+            <Content />
         </div>
     )
 }
