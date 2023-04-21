@@ -111,6 +111,8 @@ class Reservation(models.Model):
     disponibilite = models.ForeignKey(Disponibilite,on_delete=models.CASCADE)
     client = models.ForeignKey(Client,on_delete=models.CASCADE)
 
+    def reserver(self):
+        if client
     def __str__(self):
         return str(self.disponibilite.calendrier)+" "+str(self.client)
 
