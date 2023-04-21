@@ -1,10 +1,15 @@
-import React from "react"
+import React from "react";
+import Sidebar from "./Sidebar";
+import Page from "./Page";
+
 
 function App(){
   return(
     <div>
-      It's working Oumar Ly!
+      <Sidebar />
+      <Page />
     </div>
+    
   )
 }
 
