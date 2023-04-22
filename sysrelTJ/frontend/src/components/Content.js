@@ -1,10 +1,13 @@
 import React from "react";
+import Search from "./Search";
+import Display from "./Display";
 
 function Content(){
     return(
-        <div className="container">
-            <hr />
-            Contenu
+        <div>
+            <Search />
+            <hr/>
+            <Display />
         </div>
     )
 }
