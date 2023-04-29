@@ -143,15 +143,15 @@ class Client(models.Model):
     email = models.EmailField(blank=True,null=True,verbose_name="Email")
     info = models.CharField(max_length=200,blank=True,null=True,verbose_name="Autres infos")
 
-    ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,blank=True,null=True,default=22187)
-    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,blank=True,null=True,default=127)
+    ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,blank=True,null=True,default=1)
+    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,blank=True,null=True,default=1)
 
     def get_absolute_url(self): #go back to this post
         # return reverse("gestionPersonnel:details",kwargs={'pk':self.numeroEmploye})
         return reverse("ventes:clientsDetails",kwargs={'pk':self.id})
 
     def __str__(self):
-        return self.prenom+" "+self.nom+" "+str(self.nomEntreprise)
+        return self.prenom+" "+self.nom+" "+self.nomEntreprise
 
 class Devis(models.Model):
     date = models.DateField(default=timezone.now(),verbose_name="Date")

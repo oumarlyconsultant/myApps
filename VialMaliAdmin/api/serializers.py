@@ -51,6 +51,10 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = ('reference','designation','uniteDeMesure','uniteDeQuantification','prixDeRevient','prixDeVente','fabriquant','indArticleFab','info','classe','couleur','dimension','articleFabrique')
 
+class NomenclatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Nomenclature
+        fields = ('produitFini','produitBrut','qtiteArticleBrutReq')
 
 ####################### Personnel
 class DepartementSerializer(serializers.ModelSerializer):

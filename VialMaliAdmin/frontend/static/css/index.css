@@ -1,14 +1,10 @@
-#sidebar{
+.sidebarOL{
     width: 300px;
 }
 
-#content{
+.pageOL{
     margin-left: 300px;
     margin-top: 20px;
-}
-
-#navbar {
-    margin-left: 300px;
 }
 
 ul {

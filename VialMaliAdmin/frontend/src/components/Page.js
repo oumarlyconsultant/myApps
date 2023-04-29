@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
-function Page(){
+function Page(props){
     return(
-        <div>
-            <Navbar module="Operations"/>
-            <Content />
+        <div className="pageOL">
+            <Navbar moduleName={props.moduleName}/>
+            <Content moduleName={props.moduleName}/>
         </div>
     )
 }
