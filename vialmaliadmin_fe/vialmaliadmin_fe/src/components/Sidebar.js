@@ -11,7 +11,6 @@ function Sidebar(){
         setModule(e)
     }
 
-
     return(
     <div>
         {/* sidebar */}

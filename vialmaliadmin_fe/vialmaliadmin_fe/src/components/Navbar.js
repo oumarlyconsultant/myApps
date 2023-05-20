@@ -69,9 +69,12 @@ function Navbar(promps){
         subMenu12="Employes existants"
 
         menu2="Conges et absences"
+        subMenu21="Noter un conge ou une absence"
+        subMenu22="Conges et absences en cours"
 
         menu3="Salaires"
-        
+        subMenu31="Effectuer les salaires"
+        subMenu32="Salaires precedents"
     }   
 
     function chooseOption(event){
@@ -79,16 +82,149 @@ function Navbar(promps){
         setOption(e)
     }
 
-    return(
+    if(promps.module === 'Acceuil') return(
+        <div className="w3-row">
+            <div className="w3-col md w3-blue w3-text-white w3-center w3-padding" style={{textShadow:"1px 1px 0 #444"}}><a name={promps.module}><h5>{promps.module}</h5></a></div>
+        </div> 
+    )
+    else if(promps.module === 'Ventes') return(
         <div>
-            <div class="w3-row">
-                <div class="w3-col md w3-blue-grey w3-text-amber w3-center w3-padding" style={{textShadow:"1px 1px 0 #444"}}><a name={promps.module}><h5>{promps.module}</h5></a></div>
+        <div className="w3-row">
+            <div className="w3-col md w3-dark-grey w3-text-white w3-center w3-padding" style={{textShadow:"1px 1px 0 #444"}}><a name={promps.module}><h5>{promps.module}</h5></a></div>
+        </div> 
+    
+        <div className="w3-bar">
+            <div className="w3-row">
+                <div className="w3-col s4 w3-black w3-border" >
+                <div className="w3-dropdown-hover">
+                    <button className="w3-button w3-black">{menu1}</button>
+                    <div className="w3-dropdown-content w3-card-4">
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu11} onClick={chooseOption}>{subMenu11}</a>
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu12} onClick={chooseOption}>{subMenu12}</a>
+                    </div>
+                </div>
+                </div>
 
-                <div class="w3-col s3 w3-black w3-center w3-button"><a name={menu1} onClick={chooseOption}>{menu1}</a></div>
-                <div class="w3-col s3 w3-black w3-center w3-button"><a name={menu2} onClick={chooseOption}>{menu2}</a></div>
-                <div class="w3-col s3 w3-black w3-center w3-button"><a name={menu3} onClick={chooseOption}>{menu3}</a></div>
-                <div class="w3-col s3 w3-black w3-center w3-button"><a name={menu4} onClick={chooseOption}>{menu4}</a></div>    
-            </div>   
+                <div className="w3-col s4 w3-black w3-border" >
+                <div className="w3-dropdown-hover">
+                    <button className="w3-button w3-black">{menu2}</button>
+                    <div className="w3-dropdown-content w3-card-4">
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu21} onClick={chooseOption}>{subMenu21}</a>
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu22} onClick={chooseOption}>{subMenu22}</a>
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu23} onClick={chooseOption}>{subMenu23}</a>
+                    </div>
+                </div>
+                </div>
+
+                <div className="w3-col s4 w3-black w3-border" >
+                <div className="w3-dropdown-hover">
+                    <button className="w3-button w3-black">{menu3}</button>
+                    <div className="w3-dropdown-content w3-card-4">
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu31} onClick={chooseOption}>{subMenu31}</a>
+                        <a href="#" className="w3-bar-item w3-button" name={subMenu32} onClick={chooseOption}>{subMenu32}</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <Content option={option}/>
+    </div>   
+    )
+    else if(promps.module === 'Operations') return(
+        <div>
+            <div className="w3-row">
+                <div className="w3-col md w3-dark-grey w3-text-white w3-center w3-padding" style={{textShadow:"1px 1px 0 #444"}}><a name={promps.module}><h5>{promps.module}</h5></a></div>
+            </div> 
+        
+            <div className="w3-bar">
+                <div className="w3-row">
+                    <div className="w3-col s3 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu1}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu11} onClick={chooseOption}>{subMenu11}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu12} onClick={chooseOption}>{subMenu12}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="w3-col s3 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu2}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu21} onClick={chooseOption}>{subMenu21}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu22} onClick={chooseOption}>{subMenu22}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="w3-col s3 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu3}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu31} onClick={chooseOption}>{subMenu31}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu32} onClick={chooseOption}>{subMenu32}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="w3-col s3 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu4}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu41} onClick={chooseOption}>{subMenu41}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu42} onClick={chooseOption}>{subMenu42}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <Content option={option}/>
+        </div>    
+    )
+    else if(promps.module === 'Personnel') return(
+        <div>
+            <div className="w3-row">
+                <div className="w3-col md w3-dark-grey w3-text-white w3-center w3-padding" style={{textShadow:"1px 1px 0 #444"}}><a name={promps.module}><h5>{promps.module}</h5></a></div>
+            </div> 
+        
+            <div className="w3-bar">
+                <div className="w3-row">
+                    <div className="w3-col s4 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu1}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu11} onClick={chooseOption}>{subMenu11}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu12} onClick={chooseOption}>{subMenu12}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="w3-col s4 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu2}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu21} onClick={chooseOption}>{subMenu21}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu22} onClick={chooseOption}>{subMenu22}</a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="w3-col s4 w3-black w3-border" >
+                    <div className="w3-dropdown-hover">
+                        <button className="w3-button w3-black">{menu3}</button>
+                        <div className="w3-dropdown-content w3-card-4">
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu31} onClick={chooseOption}>{subMenu31}</a>
+                            <a href="#" className="w3-bar-item w3-button" name={subMenu32} onClick={chooseOption}>{subMenu32}</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
             <Content option={option}/>
         </div>   
     )
