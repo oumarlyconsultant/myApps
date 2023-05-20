@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Page from "./Page";
 
 function App(){
+
+  const [selectedModule,setSelectedModule] = useState()
+
+  function selectModule(module){
+    // setSelectedModule(module)
+    // console.log(selectedModule)
+  }
+
   return(
     <div>
-      <Sidebar />      
+      <Sidebar onSelectModule={selectModule} /> 
+      <Page module={selectedModule} />
     </div>
     
   )

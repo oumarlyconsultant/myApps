@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-function Ventes() {
+function Clients() {
 
-    // const [action,setAction] = useState('Ventes')
+    // const [action,setAction] = useState('Clients')
 
     // function handleClick(){
 
@@ -15,10 +15,10 @@ function Ventes() {
 
     return(
         <div>
-            Ventes!
+            Clients!
         </div>
     )
 
 }
 
-export default Ventes;
+export default Clients;

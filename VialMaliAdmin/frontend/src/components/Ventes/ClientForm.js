@@ -49,21 +49,21 @@ function ClientForm(){
     //     })
     //     console.log("Form submitted!")
     // }
-    const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-            prenom: inputs.prenom,
-            nom: inputs.nom,
-            nomEntreprise: inputs.nomEntreprise,
-            adresse: inputs.adresse,
-            telephone: inputs.telephone,
-            email: inputs.email,
-            info: inputs.info,
-        })
-    };
+    // const requestOptions = {
+    //     method: 'POST',
+    //     headers: {'Content-Type':'application/json'},
+    //     body: JSON.stringify({
+    //         prenom: inputs.prenom,
+    //         nom: inputs.nom,
+    //         nomEntreprise: inputs.nomEntreprise,
+    //         adresse: inputs.adresse,
+    //         telephone: inputs.telephone,
+    //         email: inputs.email,
+    //         info: inputs.info,
+    //     })
+    // };
 
-    console.log(fetch('http://localhost:8000/api/client/',requestOptions)).then((response) => response.json()).then((data) => console.log(data))
+    // console.log(fetch('http://localhost:8000/api/client/',requestOptions)).then((response) => response.json()).then((data) => console.log(data))
 
     
     // console.log(requestOptions['body'])

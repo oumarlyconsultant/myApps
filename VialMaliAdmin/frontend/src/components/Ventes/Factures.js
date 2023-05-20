@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-function Ventes() {
+function Factures() {
 
-    // const [action,setAction] = useState('Ventes')
+    // const [action,setAction] = useState('Factures')
 
     // function handleClick(){
 
@@ -15,10 +15,10 @@ function Ventes() {
 
     return(
         <div>
-            Ventes!
+            Factures!
         </div>
     )
 
 }
 
-export default Ventes;
+export default Factures;
