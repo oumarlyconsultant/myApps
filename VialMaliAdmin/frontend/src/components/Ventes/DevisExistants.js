@@ -1,12 +1,11 @@
 import React from "react";
 
-function Personnel() {
+function DevisExistants(){
     return(
         <div>
-            Employe!
+            Test
         </div>
     )
-
 }
 
-export default Personnel;
+export default DevisExistants;

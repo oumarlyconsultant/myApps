@@ -1,40 +1,33 @@
 import React, { useState } from "react";
-import Page from "./Page";
+import Navbar from "./Navbar";
 
-function Sidebar(props){
+function Sidebar(){
 
-    const [module,setModule] = useState("");
+    const [module,setModule] = useState("Acceuil")
 
-    function handleClick(event){
-        let selectedModule = event.target.name
-        setModule(selectedModule)
-        console.log(selectedModule)
-        console.log(module)
-    
-        // if (selectedModule === 'Acceuil') setModule('Acceuil')
-        // else if (selectedModule === 'Ventes') setModule('Ventes')
-        // else if (selectedModule === 'Operations') setModule('Operations')
-        // else if (selectedModule === 'Personnel') setModule('Personnel')
-        props.onSelectModule(module)
-        event.preventDefault()
+    function chooseModule(event){
+        const e = event.target.name
+        // console.log(e)
+        setModule(e)
     }
 
     return(
-        <div>
-            <div className="w3-sidebar w3-bar-block w3-black w3-xxlarge sidebarOL">
-                <div className="w3-bar-item">
-                    <h1><strong>Vial-Mali Admin</strong></h1>
-                </div>
-                <ul>
-                    <li className="w3-bar-item"><a href="#"  onClick={handleClick} name='Acceuil'><i className="fa fa-home"></i> Acceuil</a></li>
-                    <li className="w3-bar-item"><a href="#"  onClick={handleClick} name='Ventes'><i className="fa fa-money"></i> Ventes</a> </li>
-                    <li className="w3-bar-item"><a href="#"  onClick={handleClick} name='Operations'><i className="fa fa-cogs"></i> Operations</a></li>
-                    <li className="w3-bar-item"><a href="#"  onClick={handleClick} name='Personnel'><i className="fa fa-users"></i> Personnel</a></li>
-                </ul>
-            </div>
+    <div>
+        {/* sidebar */}
+        <div className="w3-sidebar w3-dark-grey w3-bar-block" style={{width:"15%"}}>
+        <h3 className="w3-bar-item">Vial-Mali Admin</h3>
+        <a href="#" className="w3-bar-item w3-button" name="Acceuil" onClick={chooseModule}>Acceuil</a>
+        <a href="#" className="w3-bar-item w3-button" name="Ventes" onClick={chooseModule}>Ventes</a>
+        <a href="#" className="w3-bar-item w3-button" name="Operations" onClick={chooseModule}>Operations</a>
+        <a href="#" className="w3-bar-item w3-button" name="Personnel" onClick={chooseModule}>Personnel</a>
         </div>
+
+        {/* navbar and content */}
+        <div style={{marginLeft:"15%"}}>
+            <Navbar module={module}/>
+        </div>
+    </div>
     )
 }
 
 export default Sidebar;
-

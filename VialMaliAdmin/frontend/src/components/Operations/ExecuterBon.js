@@ -1,12 +1,11 @@
 import React from "react";
 
-function Operations() {
+function ExecuterBon(){
     return(
         <div>
-            Ops!
+            Test
         </div>
     )
-
 }
 
-export default Operations;
+export default ExecuterBon;

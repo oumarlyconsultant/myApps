@@ -9,7 +9,8 @@ router = routers.DefaultRouter()
 router.register(r'pays', views.PaysView, 'pays')
 router.register(r'ville', views.VilleView, 'ville')
 router.register(r'departement', views.DepartementView, 'departement')
-router.register(r'poste', views.PosteView, 'employe')
+router.register(r'poste', views.PosteView, 'poste')
+router.register(r'employe', views.EmployeView, 'employe')
 router.register(r'termesEmploi', views.TermesEmploiView, 'termesEmploi')
 router.register(r'classe', views.ClasseView, 'classe')
 router.register(r'couleur', views.CouleurView, 'couleur')
@@ -22,4 +23,5 @@ router.register(r'devisArticle', views.DevisArticleView, 'devisArticle')
 
 urlpatterns = [
     path('',include(router.urls)),
+    # path('ajouterEmploye/',views.ajouterEmploye,name="ajouter-employe"),
 ]

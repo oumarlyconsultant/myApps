@@ -5,3 +5,8 @@ class ClientForm(ModelForm):
     class Meta:
         model = Client
         fields = '__all__'
+
+class EmployeForm(ModelForm):
+    class Meta:
+        model = Employe
+        fields = "__all__"

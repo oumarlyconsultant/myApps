@@ -8,12 +8,31 @@ from . import models
 from django.core.paginator import Paginator
 from django.contrib import messages
 from . import serializers as srz
-from rest_framework import generics, status, viewsets, status, response, views
-from .forms import ClientForm
+from rest_framework import generics, status, viewsets, status, response, views, serializers
+from rest_framework.decorators import api_view
+from .forms import EmployeForm
+# from django.views.decorators.csrf import ensure_csrf_cookie
 
 # Create your views here.
 # class index(TemplateView):
 #     template_name = "./acceuil/acceuil.html"
+
+# def ajouterEmploye(request):
+#     context_dict = {'form':None}
+#     form = EmployeForm()
+
+#     if request.method == 'GET':
+#         context_dict['form'] = form
+#     elif request.method == 'POST':
+#         form = EmployeForm(request.POST)
+#         context_dict['form'] = form
+#         if form.is_valid():
+#             cleaned_data = form.cleaned_data
+#             messages.success(request,'Nouvel employe ajouter')
+#     else:
+#         messages.error(request,"ERREUR!")
+#     return render(request,'/home/oumarlyconsultant/Documents/myApps/VialMaliAdmin/frontend/templates/frontend/index.html')
+
 
 ############# SERIALIZERS ##################
 class PaysView(viewsets.ModelViewSet):
@@ -72,42 +91,14 @@ class DevisView(viewsets.ModelViewSet):
 class DevisArticleView(viewsets.ModelViewSet):
     serializer_class = srz.DevisArticleSerializer
     queryset = models.DevisArticle.objects.all()
-
-############# FORMS ##################
-# class NouveauClientView(views.APIView):
-#     serializer_class = srz.ClientSerializer
-
-#     def post(self,request,format=None):
-#         serializer = self.serializer_class(data=request.data)
-#         if serializer.is_valid():
-#             client_Obj = models.Client(
-#             prenom= serializer.data.get('prenom'),
-#             nom= serializer.data.get('nom'),
-#             nomEntreprise= serializer.data.get('nomEntreprise'),
-#             adresse= serializer.data.get('adresse'),
-#             ville= serializer.data.get('ville'),
-#             pays= serializer.data.get('pays'),
-#             telephone= serializer.data.get('telephone'),
-#             email= serializer.data.get('email'),
-#             info= serializer.data.get('info')
-#             )            
-#             client_Obj.save()
-#         return response.Response(srz.ClientSerializer(client_Obj).data,status=status.HTTP_201_CREATED)
     
-# def nouveauClient(request):
-#     context_dict = {'form': None}
-#     form = ClientForm()
-
-#     if request.method == 'GET':
-#         context_dict['form'] = form
-#     elif request.method == 'POST':
-#         form = ClientForm(request.POST)
-#         context_dict['form'] = form
-#         if form.is_valid():
-#             cleaned_data = form.cleaned_data
-#             print(cleaned_data)
-#             messages.success(request,'Nouveau client enregistre!')
-#         else:
-#             messages.error(request,'Client non-enregistre. Veuillez ressayer')
-    
-#     return render(request,'../frontend/templates/frontend/index.html',context_dict)
+####CREATE VIEWS
+# @api_view(['POST'])
+# @ensure_csrf_cookie
+# def ajouterEmploye(request):
+#     employe = srz.EmployeSerializer(data=request.data)
+#     if employe.is_valid():
+#         employe.save()
+#         return response.Response(employe.data)
+#     else:
+#         return response.Response(status=status.HTTP_404_NOT_FOUND)

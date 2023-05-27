@@ -1,335 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
+
+import CreerDevis from "./Ventes/CreerDevis";
+import DevisExistants from "./Ventes/DevisExistants";
+import CreerFacture from "./Ventes/CreerFacture";
+import FacturesExistants from "./Ventes/FacturesExistants";
+import EffectuerPaiement from "./Ventes/EffectuerPaiement";
+import AjouterClient from "./Ventes/AjouterClient";
+import ClientsExistants from "./Ventes/ClientsExistants";
+
+import AjouterArticle from "./Operations/AjouterArticle";
+import ConsulterStockArt from "./Operations/ConsulterStockArt";
+import CreerBon from "./Operations/CreerBon";
+import BonsExistants from "./Operations/BonsExistants";
+import ExecuterBon from "./Operations/ExecuterBon";
+import MisAJourStock from "./Operations/MisAJourStock";
+import AjouterMagasin from "./Operations/AjouterMagasin";
+import ConsulterStockMag from "./Operations/ConsulterStockMag";
+
+import AjouterEmploye from "./Personnel/AjouterEmploye";
+import EmployesExistants from "./Personnel/EmployesExistants";
 
 
-function Content(props){
+function Content(promps){
+    if(promps.option !== '')
+        return(
+            <div className="w3-container w3-margin-top w3-padding">
+                <div className="w3-panel w3-dark-grey">
+                    <h2>{promps.option}</h2>
+                </div>
+                <hr/>
+                {promps.option === 'Creer un devis' && <CreerDevis/>}
+                {promps.option === 'Devis existants' && <DevisExistants/>}
+                {promps.option === 'Creer une facture' && <CreerFacture/>}
+                {promps.option === 'Factures existantes' && <FacturesExistants/>}
+                {promps.option === 'Effectuer un paiement' && <EffectuerPaiement/>}
+                {promps.option === 'Ajouter un client' && <AjouterClient/>}
+                {promps.option === 'Clients existants' && <ClientsExistants/>}
 
-  function showContent(O){
-    if(O==='Acceuil') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
+                {promps.option === 'Ajouter un article' && <AjouterArticle/>}
+                {promps.option === 'Consulter le stock' && <ConsulterStockArt/>}
+                {promps.option === 'Creer un bon de commande' && <CreerBon/>}
+                {promps.option === 'Bons de commande existants' && <BonsExistants/>}
+                {promps.option === 'Executer un bon de commande' && <ExecuterBon/>}
+                {promps.option === 'Mis a jour du stock' && <MisAJourStock/>}
+                {promps.option === 'Ajouter un magasin' && <AjouterMagasin/>}
+                {promps.option === 'Consulter stock par magasin' && <ConsulterStockMag/>}
 
-    } 
-    else if(O==='Ventes') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Devis') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Creer_devis') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Devis_actives') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_devis') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Factures') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-    else if(O==='Generer_factures') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Factures_actives') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_factures') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Clients') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Nouveau_client') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Clients_existants') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Rapport_client') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-
-    else if(O==='Operations') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Stock') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Consulter_stock') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Mis_a_jour_stock') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_transactions') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Bons_de_commande') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-    else if(O==='Nouveau_bon') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Bons_actives') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_bons') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Articles_et_produits') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Articles_bruts') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Articles_fabriques') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Nouvel_article') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-
-    else if(O==='Personnel') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Employes') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Nouvel_employe') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Employe_existant') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_transactions') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Absences_et_conges') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-    else if(O==='Nouvel_absence') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Modifier_requete_abscence') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_absences') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Salaires') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Effectuer_salaire') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Changer_structure_salarial') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    } 
-    else if(O==='Historique_salaires') {
-      return(
-        <div>
-          {O}
-        </div>
-      )
-      
-    }
-  }
-
-  showContent(props.option)
-
+                {/* {promps.option === 'Ajouter un employe' && <AjouterEmploye/>} */}
+                {promps.option === 'Ajouter un employe' && <AjouterEmploye/>}
+                {/* {promps.option === 'Employes existants' && <EmployesExistants/>} */}
+                {promps.option === 'Employes existants' && <EmployesExistants/>}
+            </div>
+        )
 }
 
 export default Content;

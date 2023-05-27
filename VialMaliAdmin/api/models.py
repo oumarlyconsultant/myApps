@@ -44,16 +44,17 @@ class Employe(models.Model):
     prenom = models.CharField(max_length=50)
     nom = models.CharField(max_length=50)
     dateNaissance = models.DateField(default='1991-01-01')
-    sexe = models.CharField(max_length=1,choices=(('H','HOMME'),('F','FEMME')))
+    sexe = models.CharField(max_length=1,choices=(('H','HOMME'),('F','FEMME')),default='H')
     adresseDomicile = models.CharField(max_length=100,default="Bamako")
     telephone = models.CharField(max_length=50,blank=False,null=False)
+    telephone2 = models.CharField(max_length=50,blank=True,null=True)
     email = models.EmailField(blank=True,null=True)
  
-    ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,default=22187)
-    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,default=127)
+    ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,default=1)
+    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,default=1)
     
-    poste = models.ForeignKey(Poste,on_delete=models.RESTRICT,blank=False,null=False,default=999)
-    departement = models.ForeignKey(Departement,on_delete=models.RESTRICT,blank=False,null=False,default=999)
+    poste = models.ForeignKey(Poste,on_delete=models.RESTRICT,blank=False,null=False,default=1)
+    departement = models.ForeignKey(Departement,on_delete=models.RESTRICT,blank=False,null=False,default=1)
     responsable = models.ForeignKey('self',blank=True,null=True,on_delete=models.RESTRICT)
 
     # def get_absolute_url(self): #go back to this post

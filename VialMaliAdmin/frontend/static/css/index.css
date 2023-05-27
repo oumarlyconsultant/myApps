@@ -1,32 +1,8 @@
-.sidebarOL{
-    width: 300px;
+.myform {
+    width: 700px;
+
 }
 
-.pageOL{
-    margin-left: 300px;
-    margin-top: 20px;
-}
-
-ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #000000;
-}
-
-li a {
-display: block;
-color: white;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-}
-
-li a:hover:not(.active) {
-background-color: #aa0404;
-}
-
-.active {
-background-color: #aa0404;
+.mytable{
+    width: 700px;
 }
