@@ -1,0 +1,10 @@
+#PERSONNEL
+#Formulaire employe
+- Montrer les informations de la base dans une colonne pour selectionner (sexe, ville, pays, responsable, etc)
+- Success page et routing vers les infos du nouvel employe
+- presentation du formulaire et de la page (ameliorer visuel)
+#Employes existants
+- rechercher seulement apres click
+- click sur le nom d'employe et montrer les informations de l'employe
+- boutons de navigations (suivant, precedent, autres options, etc)
+- presentation general de la page (ameliorer visuel)

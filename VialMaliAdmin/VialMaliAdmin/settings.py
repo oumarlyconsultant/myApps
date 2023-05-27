@@ -87,16 +87,28 @@ WSGI_APPLICATION = "VialMaliAdmin.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "VMA_DB",
+#         "USER": "oumar",
+#         'PASSWORD': '667290lY',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+#pip install mysqlclient
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",# change - oumar 25/03/2023
+        "ENGINE": "django.db.backends.mysql",
         "NAME": "VMA_DB",
-        "USER": "oumar",
+        "USER": "root",
         'PASSWORD': '667290lY',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
