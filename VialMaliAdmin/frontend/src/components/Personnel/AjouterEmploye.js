@@ -63,7 +63,7 @@ function AjouterEmploye(){
     }
 
     return(
-    <div className="w3-card-4 myform" id='employeForm'>
+    <div className="w3-card-4 myform">
     <div className="w3-container w3-brown">
         <h4>Remplissez le formulaire avec les informations du nouvel employe</h4>
     </div>
@@ -115,6 +115,7 @@ function AjouterEmploye(){
         <p>
         <label className="w3-text-black"><b>Email</b></label>
         <input className="w3-input w3-border w3-sand" name="email" type="email" onChange={handleChange}/></p>
+
         <h5 className="w3-center"><em><u>Informations sur l'emploi</u></em></h5>
         <p>
         <label className="w3-text-black"><b>Poste: </b></label>&nbsp;
@@ -132,8 +133,11 @@ function AjouterEmploye(){
         {objAll4.map(x => <option value={x.id}>{x.prenom}&nbsp;{x.nom}</option>)}
         </select></p>
         <p>
-        <button className="w3-btn w3-brown" name="action" type="submit">Enregistrer</button>&nbsp;
-        <button className="w3-btn w3-grey">Annuler</button>
+            <div style={{textAlign:"center"}}>
+                <button className="w3-btn w3-light-gray" style={{width:"25%"}} name="action" type="submit">Enregistrer</button>&nbsp;
+                <button className="w3-btn w3-grey" style={{width:"12.5%"}}>Annuler</button>
+            </div>
+
         </p>
     </form>
     </div>
