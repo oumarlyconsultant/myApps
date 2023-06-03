@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import sendFormData from "../myFunctions/sendFormData";
 import axios from "axios";
+import ProfilEmploye from "./ProfilEmploye";
 
 function AjouterEmploye(){
 
@@ -55,11 +56,6 @@ function AjouterEmploye(){
         console.log(name)
         console.log(value)
 
-    }
-
-    function handleSubmit(event){
-        event.preventDefault()
-        sendFormData(formData,endpointP)
     }
 
     return(
@@ -134,7 +130,7 @@ function AjouterEmploye(){
         </select></p>
         <p>
             <div style={{textAlign:"center"}}>
-                <button className="w3-btn w3-light-gray" style={{width:"25%"}} name="action" type="submit">Enregistrer</button>&nbsp;
+                <button className="w3-btn w3-purple" style={{width:"25%"}} name="action" type="submit">Enregistrer</button>&nbsp;
                 <button className="w3-btn w3-grey" style={{width:"12.5%"}}>Annuler</button>
             </div>
 
