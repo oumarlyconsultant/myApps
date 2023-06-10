@@ -58,6 +58,11 @@ function AjouterEmploye(){
 
     }
 
+    function handleSubmit(event){
+        event.preventDefault()
+        sendFormData(formData,endpointP)
+    }
+
     return(
     <div className="w3-card-4 myform">
     <div className="w3-container w3-brown">

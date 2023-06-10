@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ShowFields from "../myFunctions/ShowFields"
+import DisplayResults from "./DisplayResults"
 import RetrieveAPIData from "../myFunctions/RetrieveAPIData"
 
 function EmployesExistants_p2(props){
@@ -19,31 +19,36 @@ function EmployesExistants_p2(props){
         if(props.searchKey!='') {
             let searchResults = objAll.filter(s => (s.nom.includes(props.searchKey) || s.prenom.includes(props.searchKey)))
             return(
-                <table className="w3-table w3-striped">
-                <tr className="w3-grey">
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Poste</th>
-                    <th>Departement</th>
-                </tr>
-                {searchResults.map(x => <ShowFields key={x.numeroEmploye} fieldA={x.prenom} fieldB={x.nom} fieldC={x.poste} fieldD={x.departement}/>)}
-                </table>
+                <div>
+                    <p>Clicker sur le prenom/nom de l'employe pour plus d'information</p>
+                    <table className="w3-table w3-striped mytable">
+                    <tr className="w3-grey">
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Poste</th>
+                        <th>Departement</th>
+                    </tr>
+                    {searchResults.map(x => <DisplayResults key={x.numeroEmploye} id={x.id} numEmp={x.numeroEmploye} prenom={x.prenom} nom={x.nom} poste={x.poste} departement={x.departement}/>)}
+                    </table>
+
+                </div>
+
             )
             }
         else if(props.searchKey=='') return("Veuillez entrez une valeur a rechercher")
     }
     else if(props.mode=='all') return(
         <div>
-            <table className="w3-table w3-striped">
+            <p>Clicker sur le prenom/nom de l'employe pour plus d'information</p>
+            <table className="w3-table w3-striped mytable">
             <tr className="w3-grey">
                 <th>Prenom</th>
                 <th>Nom</th>
                 <th>Poste</th>
                 <th>Departement</th>
             </tr>
-            {objAll.map(x => <ShowFields key={x.numeroEmploye} fieldA={x.prenom} fieldB={x.nom} fieldC={x.poste} fieldD={x.departement}/>)}
+            {objAll.map(x => <DisplayResults key={x.numeroEmploye} id={x.id} numEmp={x.numeroEmploye} prenom={x.prenom} nom={x.nom} poste={x.poste} departement={x.departement}/>)}
             </table>
-            <RetrieveAPIData entity="employe" data='this' id='3' />
         </div>
 
     )

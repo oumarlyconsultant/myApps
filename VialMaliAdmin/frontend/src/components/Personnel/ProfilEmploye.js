@@ -14,7 +14,11 @@ function ProfilEmploye(props){
 
     const thisEmploye = objAll.filter(s => (s.id == props.id))[0]
 
-    if(thisEmploye) console.log(thisEmploye)
+    return(
+    <p>OUMAR!</p>
+    )
+
+    // if(thisEmploye) console.log(thisEmploye)
     // return(
     //     <div className="w3-container w3-light-blue">
     //         <p><strong>Numero d'employe: </strong>{thisEmploye.numeroEmploye}</p>
@@ -29,7 +33,7 @@ function ProfilEmploye(props){
     //         <p><strong>Responsable: </strong>{thisEmploye.responsable}</p>
     //     </div>
     // )
-    else return("Une erreur s'est produite!")
+    // else return("Une erreur s'est produite!")
 
 }
 
