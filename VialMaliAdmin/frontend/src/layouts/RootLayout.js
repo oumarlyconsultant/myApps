@@ -15,8 +15,8 @@ export default function RootLayout(){
     // document.getElementById("hamburgerbutton").style.display = "inline-block";
     // }
 
-    const [theSidebarStyle, setTheSidebarStyle] = useState({
-        display: "none"
+    const [theSidebarContentStyle, settheSidebarContentStyle] = useState({
+        display: "none",
     })
 
     const [theContentStyle, setTheContentStyle] = useState({
@@ -29,7 +29,7 @@ export default function RootLayout(){
     })
 
     function openHamburger(){
-        setTheSidebarStyle({
+        settheSidebarContentStyle({
             display: "block",
             width: "15%"
         }
@@ -43,8 +43,8 @@ export default function RootLayout(){
     }
 
     function closeHamburger(){
-        setTheSidebarStyle({
-            display: "none"
+        settheSidebarContentStyle({
+            display: "none",
         }
         )
         setTheContentStyle({
@@ -57,16 +57,19 @@ export default function RootLayout(){
 
     return(
         <div className="root-layout">
-            <div className="w3-sidebar w3-bar-block w3-border-right" style={theSidebarStyle} id="theSidebar">
-                    <button onClick={closeHamburger} className="w3-bar-item w3-large">Fermer &times;</button>
-                    <a href="/" className="w3-bar-item w3-button">Acceuil</a>
-                    <a href="#" className="w3-bar-item w3-button">Ventes</a>
-                    <a href="#" className="w3-bar-item w3-button">Operations</a>
-                    <a href="personnel" className="w3-bar-item w3-button">Personnel</a>
+            <div className="theSidebar" style={{position:"fixed"}}>
+                <button id="theNavButton" style={theNavButtonStyle} className="w3-button w3-red w3-xlarge" onClick={openHamburger}>&#9776;</button>
+                <div className="w3-sidebar w3-bar-block w3-border-right" style={theSidebarContentStyle} id="theSidebarContent">
+                        <button onClick={closeHamburger} className="w3-bar-item w3-large">Fermer &times;</button>
+                        <NavLink to="/" id="theNavLinkModule" style={{textDecoration:"none"}}><a className="w3-bar-item w3-button">Acceuil</a></NavLink>
+                        <NavLink to="ventes" id="theNavLinkModule" style={{textDecoration:"none"}}><a className="w3-bar-item w3-button">Ventes</a></NavLink>
+                        <NavLink to="operations" id="theNavLinkModule" style={{textDecoration:"none"}}><a className="w3-bar-item w3-button">Operations</a></NavLink>
+                        <NavLink to="personnel" id="theNavLinkModule" style={{textDecoration:"none"}}><a className="w3-bar-item w3-button">Personnel</a></NavLink>
+                </div>
             </div>
 
+
             <div className="theContent" style={theContentStyle}>
-                <button id="theNavButton" style={theNavButtonStyle} className="w3-button w3-orange w3-xlarge" onClick={openHamburger}>&#9776; Modules</button>
                 <Outlet />
             </div>
         </div>

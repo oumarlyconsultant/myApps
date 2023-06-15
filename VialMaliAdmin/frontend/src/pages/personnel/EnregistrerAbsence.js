@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-export default function Personnel(){
+export default function EnregistrerAbsence(){
 
     return(
         <div className="personnel-page">
@@ -9,7 +9,7 @@ export default function Personnel(){
                        
                 {/* The selection header */}
                     <div className="w3-panel w3-khaki w3-padding w3-round-large">
-                    <h2 class="w3-text-black"><strong>Gestion du personnel</strong></h2>
+                    <h2 class="w3-text-black">Enregistrer une abscence</h2>
                     </div>
 
                 {/* The selection content */}

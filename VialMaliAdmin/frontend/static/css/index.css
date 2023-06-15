@@ -7,3 +7,47 @@
     width: 1000px;
 }
 
+:root {
+    --primary: Khaki;
+    --secondary: Khaki;
+  }
+
+/* help layout */
+/* .personnel-layout nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+  }
+  .personnel-layout nav a{
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+  } */
+  #theNavLinkModule.active {
+    background: khaki !important;
+    font-weight: bold;
+  }
+  
+  #theNavLinkModule:hover {
+    background: khaki !important;
+  }
+
+  #theNavLinkMenu.active {
+    background: khaki !important;
+    font-weight: bold;
+  }
+  #theNavLinkMenu:hover {
+    background: khaki !important;
+  }
+
+  #theNavLinkOption.active {
+    background: gray !important;
+    font-weight: bold;
+    color: floralwhite !important;
+  }
+  
+  #theNavLinkOption:hover {
+    background: gray !important;
+  }
