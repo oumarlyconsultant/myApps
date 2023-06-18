@@ -5,10 +5,7 @@ import Sidebar from "./components/Sidebar";
 //pages
 import Acceuil from "./pages/Acceuil"
 import Personnel from "./pages/Personnel"
-import ResultatsRecherche from "./pages/Personnel/repertoire/ResultatsRecherche"
-import EmployesInactifs from "./pages/Personnel/repertoire/EmployesInactifs"
 import EmployeDetails from "./components/personnel/EmployeDetails";
-import AjouterEmploye from "./pages/personnel/AjouterEmploye";
 import EnregistrerAbsence from "./pages/personnel/EnregistrerAbsence";
 
 //layouts
@@ -16,9 +13,13 @@ import RootLayout from "./layouts/RootLayout"
 import PersonnelLayout from "./layouts/PersonnelLayout"
 import RepertoireEmployesLayout from "./layouts/personnel/RepertoireEmployesLayout";
 import TousLesEmployesLayout from "./layouts/personnel/repertoire/TousLesEmployesLayout";
+import RechercheEmployeLayout from "./layouts/personnel/repertoire/RechercheEmployeLayout";
+import NouvelEmployeLayout from "./layouts/personnel/NouvelEmployeLayout";
 
 //functions
 import { employesLoader } from "./functions/personnel/employesLoader";
+
+
 
 
 //create router
@@ -32,11 +33,14 @@ const router = createBrowserRouter(
           <Route path="actifs" element={<TousLesEmployesLayout />} loader={employesLoader}>
             <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
           </Route>
-          <Route path="resultats" element={<ResultatsRecherche />} />
-          <Route path="inactifs" element={<EmployesInactifs />} />
+          <Route path="recherche/:searchKey" element={<RechercheEmployeLayout />} loader={employesLoader}>
+            <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
+          </Route>
           
         </Route>
-        <Route path="ajouter" element={<AjouterEmploye />} />
+        <Route path="ajouter" element={<NouvelEmployeLayout />}>
+          <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
+        </Route>
         <Route path="absence" element={<EnregistrerAbsence />} />
 
       </Route>

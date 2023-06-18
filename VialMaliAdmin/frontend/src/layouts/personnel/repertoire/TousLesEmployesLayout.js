@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
 import EmployeListe from "../../../components/personnel/EmployeListe"
 
-export default function TousLesEmployes(){
+export default function TousLesEmployesLayout(){
 
     const employes = useLoaderData()
         
