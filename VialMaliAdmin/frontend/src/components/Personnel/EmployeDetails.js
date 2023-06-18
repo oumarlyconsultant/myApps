@@ -1,5 +1,5 @@
 import {useLoaderData, useParams} from "react-router-dom"
-import imgH from "../../../../static/media/photosEmployes/employe_homme_inc.png"
+import imgH from "../../../static/media/photosEmployes/employe_homme_inc.png"
 
 export default function EmployeDetails(props){
     const {numeroEmploye} = useParams()
@@ -11,8 +11,8 @@ export default function EmployeDetails(props){
     // console.log(employe)
 
     return(
-        <div className="theEmployeDetails" style={{width:"50%"}}>
-        <div className="w3-panel w3-gray w3-text-white"><h3>Fiche d'employe</h3></div>
+        <div className="theEmployeDetails" style={{width:"1000px"}}>
+        <div className="w3-panel w3-text-white" style={{backgroundColor:"gray"}}><h3>Fiche d'employe de: <strong>{employe.prenom} {employe.nom}</strong></h3></div>
             <div className="w3-card-4 w3-bar">
                 <div className="w3-bar-item w3-container w3-cell w3-center w3-padding-16">
                     <img src={imgH} class="w3-hide-small w3-border" style={{width:"300px",height:"300px"}} />

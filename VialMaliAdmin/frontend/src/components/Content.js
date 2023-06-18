@@ -17,8 +17,8 @@ import MisAJourStock from "./Operations/MisAJourStock";
 import AjouterMagasin from "./Operations/AjouterMagasin";
 import ConsulterStockMag from "./Operations/ConsulterStockMag";
 
-import AjouterEmploye from "./Personnel/AjouterEmploye";
-import EmployesExistants from "./Personnel/EmployesExistants";
+import AjouterEmploye from "./personnel/AjouterEmploye";
+import EmployesExistants from "./personnel/EmployesExistants";
 
 
 function Content(promps){

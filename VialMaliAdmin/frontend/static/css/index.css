@@ -51,3 +51,14 @@
   #theNavLinkOption:hover {
     background: gray !important;
   }
+
+  #theNavLinkEmployeListe.active {
+    background: gray !important;
+    font-weight: bold;
+    color: floralwhite !important;
+  }
+  #theNavLinkEmployeListe.hover {
+    background: gray !important;
+    font-weight: bold;
+    color: floralwhite !important;
+  }

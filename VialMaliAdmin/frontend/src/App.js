@@ -5,10 +5,9 @@ import Sidebar from "./components/Sidebar";
 //pages
 import Acceuil from "./pages/Acceuil"
 import Personnel from "./pages/Personnel"
-import TousLesEmployes from "./pages/Personnel/repertoire/TousLesEmployes"
 import ResultatsRecherche from "./pages/Personnel/repertoire/ResultatsRecherche"
 import EmployesInactifs from "./pages/Personnel/repertoire/EmployesInactifs"
-import EmployeDetails from "./pages/personnel/repertoire/EmployeDetails";
+import EmployeDetails from "./components/personnel/EmployeDetails";
 import AjouterEmploye from "./pages/personnel/AjouterEmploye";
 import EnregistrerAbsence from "./pages/personnel/EnregistrerAbsence";
 
@@ -31,7 +30,7 @@ const router = createBrowserRouter(
         <Route index element={<Personnel />} />
         <Route path="repertoire" element={<RepertoireEmployesLayout />} >
           <Route path="actifs" element={<TousLesEmployesLayout />} loader={employesLoader}>
-            <Route path=":numeroEmploye" element={<EmployeDetails />} />
+            <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
           </Route>
           <Route path="resultats" element={<ResultatsRecherche />} />
           <Route path="inactifs" element={<EmployesInactifs />} />
