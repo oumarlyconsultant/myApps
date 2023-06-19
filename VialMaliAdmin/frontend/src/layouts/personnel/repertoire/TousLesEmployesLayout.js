@@ -37,12 +37,12 @@ export default function TousLesEmployesLayout(){
         
     return(
         <div className="touslesemployes">
-        <div className="w3-cell" style={{width:"100%"}}>
+        <div className="w3-container w3-cell" style={{width:"1000px"}}>
             <Table columns={columns} data={employes}/>
             {/* <h4>Liste de tous les employes actifs</h4>
             {employes.map(employe => (<div><EmployeListe prenom={employe.prenom} nom={employe.nom} poste={employe.poste} departement={employe.departement} numeroEmploye={employe.numeroEmploye}/><br/></div>))} */}
         </div>
-        <div className="w3-container w3-cell" style={{width:"60%"}}>
+        <div className="w3-container w3-cell" style={{width:"1000px"}}>
         <Outlet /> 
         </div>
          </div>

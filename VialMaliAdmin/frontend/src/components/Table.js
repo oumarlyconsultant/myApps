@@ -1,25 +1,43 @@
-import React from "react";
-import { useTable } from "react-table";
+import { useState } from "react";
+import { useTable, useFilters } from "react-table";
 
-export default function Table({ columns, data }) {
+export default function Table({ columns, data }, props) {
   // Use the useTable Hook to send the columns and data to build the table
   const {
     getTableProps, // table props from react-table
     getTableBodyProps, // table body props from react-table
     headerGroups, // headerGroups, if your table has groupings
     rows, // rows for the table based on the data passed
-    prepareRow // Prepare the row (this function needs to be called for each row before getting the row props)
+    prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
+    setFilter, // The useFilter Hook provides a way to set the filter
   } = useTable({
     columns,
-    data
-  });
+    data,
+  },useFilters);
 
-  /* 
-    Render the UI for your table
-    - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
-  */
+  ///////////////////// For search filter
+  // Create a state
+  const [filterInput, setFilterInput] = useState("");
+
+  // Update the state when input changes
+  const handleFilterChange = e => {
+    const value = e.target.value || undefined;
+    setFilter("prenom",value)
+    setFilterInput(value);
+  };
+
+  // Input element
+
+  /////////////////////////////////////////
+
   return (
-    <table {...getTableProps()}>
+    <div>
+      <input
+        value={filterInput}
+        onChange={handleFilterChange}
+        placeholder={"Recherchez dans la table..."}
+      />
+      <table {...getTableProps()} className="w3-table w3-striped w3-bordered w3-responsive w3-hoverable">
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -42,5 +60,8 @@ export default function Table({ columns, data }) {
         })}
       </tbody>
     </table>
+  
+    </div>
+    
   );
 }
