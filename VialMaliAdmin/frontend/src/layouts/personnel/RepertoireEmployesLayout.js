@@ -1,14 +1,40 @@
-import { useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
+import Table from "../../components/Table"
 
 export default function RepertoireEmployesLayout(){
 
-    const [searchKey,setSearchKey] = useState("")
+    const employes = useLoaderData()
 
-    function handleChange(event){
-        let e = event.target.value
-        setSearchKey(e)
-    }
+    const columns = useMemo(
+        () => [
+            {
+                Header: " ",
+                columns: [
+                    {
+                        Header: "Prenom",
+                        accessor: "prenom"
+                    },
+                    {
+                        Header: "Nom",
+                        accessor: "nom"
+                    },
+                    {
+                        Header: "Poste",
+                        accessor: "poste"
+                    },
+                    {
+                        Header: "Departement",
+                        accessor: "departement"
+                    },
+                    {
+                        Header: "Numero d'employe",
+                        accessor: "numeroEmploye"
+                    }
+                ]
+            }
+        ],[]
+    )
 
     return(
         <div className="repertoire-employe-layout">
@@ -20,17 +46,12 @@ export default function RepertoireEmployesLayout(){
                 </div>
 
                 {/* The selection content */}
-                <div className="repertoire-employes-content">
-                    <div className="w3-row">
-                        <form method="get">
-                        <input type="text" placeholder="Recherchez par nom ou prenom d'employe" name="searchKey" value={searchKey} onChange={handleChange} style={{width:"400px",height:"40px"}}/> 
-                        <NavLink to={'recherche/'+searchKey} id="theNavLinkOption" className="w3-button w3-gray"><i className="fa fa-search"></i></NavLink> &nbsp;             
-                        <NavLink to='actifs' id="theNavLinkOption" className="w3-button w3-light-gray w3-round">Liste de tous les employes</NavLink> &nbsp;
-                        </form>
-                    </div>
-                </div>
 
                 <p></p>
+
+                <div className="w3-container w3-cell" style={{width:"1000px"}}>
+                    <Table columns={columns} data={employes} search="prenom" key="numeroEmploye"/>
+                </div>
 
                 <Outlet />
                 

@@ -1,7 +1,43 @@
 import { useState } from "react";
-import { useTable, useFilters } from "react-table";
+import { useTable, useFilters, useSortBy } from "react-table";
+import { NavLink, useNavigate } from "react-router-dom";
 
-export default function Table({ columns, data }, props) {
+export default function Table({ columns, data, search=""}) {
+
+  // const employes = useLoaderData()
+
+  // const columns = useMemo(
+  //     () => [
+  //         {
+  //             Header: " ",
+  //             columns: [
+  //                 {
+  //                     Header: "Prenom",
+  //                     accessor: "prenom"
+  //                 },
+  //                 {
+  //                     Header: "Nom",
+  //                     accessor: "nom"
+  //                 },
+  //                 {
+  //                     Header: "Poste",
+  //                     accessor: "poste"
+  //                 },
+  //                 {
+  //                     Header: "Departement",
+  //                     accessor: "departement"
+  //                 },
+  //                 {
+  //                     Header: "Numero d'employe",
+  //                     accessor: "numeroEmploye"
+  //                 }
+  //             ]
+  //         }
+  //     ],[]
+  // )
+
+
+
   // Use the useTable Hook to send the columns and data to build the table
   const {
     getTableProps, // table props from react-table
@@ -13,19 +49,30 @@ export default function Table({ columns, data }, props) {
   } = useTable({
     columns,
     data,
-  },useFilters);
+  },useFilters,useSortBy);
 
   ///////////////////// For search filter
   // Create a state
   const [filterInput, setFilterInput] = useState("");
 
+  const navigate = useNavigate();
+
   // Update the state when input changes
   const handleFilterChange = e => {
     const value = e.target.value || undefined;
-    setFilter("prenom",value)
+    setFilter(search,value)
     setFilterInput(value);
   };
 
+  const handleClick = (event) => {
+    console.log("clicked")
+    const e = event.target
+    console.log(typeof(e))
+    // navigate(e)
+    console.log(e.textContent)
+
+    // navigate(e.textContent)
+  }
   // Input element
 
   /////////////////////////////////////////
@@ -36,13 +83,14 @@ export default function Table({ columns, data }, props) {
         value={filterInput}
         onChange={handleFilterChange}
         placeholder={"Recherchez dans la table..."}
+        style={{width:"400px",display:search == "" && "none"}}
       />
       <table {...getTableProps()} className="w3-table w3-striped w3-bordered w3-responsive w3-hoverable">
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())} className={column.isSorted? column.isSortedDesc? "sort-desc": "sort-asc":""}>{column.render("Header")}</th>
             ))}
           </tr>
         ))}
@@ -52,9 +100,11 @@ export default function Table({ columns, data }, props) {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
+              
               {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return <td {...cell.getCellProps()} onClick={handleClick}>{cell.render("Cell")}</td>;
               })}
+              
             </tr>
           );
         })}

@@ -29,7 +29,7 @@ const router = createBrowserRouter(
       <Route index element={<Acceuil />} />
       <Route path="personnel" element={<PersonnelLayout />}>
         <Route index element={<Personnel />} />
-        <Route path="repertoire" element={<RepertoireEmployesLayout />} >
+        <Route path="repertoire" element={<RepertoireEmployesLayout />} loader={employesLoader}>
           <Route path="actifs" element={<TousLesEmployesLayout />} loader={employesLoader}>
             <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
           </Route>
