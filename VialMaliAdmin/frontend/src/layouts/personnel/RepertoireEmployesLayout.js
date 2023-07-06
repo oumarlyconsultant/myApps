@@ -1,59 +1,22 @@
 import { useEffect, useState, useMemo } from "react"
-import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
-import Table from "../../components/Table"
+import { Link, NavLink, Outlet, useLoaderData, useNavigate } from "react-router-dom"
+// import Table from "../../components/ReactTable"
 
 export default function RepertoireEmployesLayout(){
 
-    const employes = useLoaderData()
-
-    const columns = useMemo(
-        () => [
-            {
-                Header: " ",
-                columns: [
-                    {
-                        Header: "Prenom",
-                        accessor: "prenom"
-                    },
-                    {
-                        Header: "Nom",
-                        accessor: "nom"
-                    },
-                    {
-                        Header: "Poste",
-                        accessor: "poste"
-                    },
-                    {
-                        Header: "Departement",
-                        accessor: "departement"
-                    },
-                    {
-                        Header: "Numero d'employe",
-                        accessor: "numeroEmploye"
-                    }
-                ]
-            }
-        ],[]
-    )
-
     return(
-        <div className="repertoire-employe-layout">
+        <div className="repertoire-employes-layout">
             <div class="w3-container">    
                        
-                {/* The selection header */}
-                <div className="repertoire-employes-header w3-panel w3-khaki w3-padding w3-round-large">
-                    <h2 class="w3-text-black w3-bold"><strong>Repertoire des employes</strong></h2>
+                {/* The section header */}
+                <div className="the-header w3-panel w3-khaki w3-padding w3-round-large">
+                    <h2 class="w3-text-black w3-bold"><strong><i class="fa fa-book" aria-hidden="true"/> Repertoire des employes</strong></h2>
                 </div>
 
-                {/* The selection content */}
-
-                <p></p>
-
-                <div className="w3-container w3-cell" style={{width:"1000px"}}>
-                    <Table columns={columns} data={employes} search="prenom" key="numeroEmploye"/>
+                {/* The content header */}            
+                <div class="the-content">
+                    <Outlet />
                 </div>
-
-                <Outlet />
                 
             </div>
         </div>

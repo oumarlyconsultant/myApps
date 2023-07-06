@@ -9,9 +9,10 @@ export default function PersonnelLayout(){
             </div>
             <div className="w3-center w3-padding w3-pannel w3-gray">
                 <div class="w3-bar w3-large">
-                    <NavLink to='repertoire' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left">Repertoire des employes</NavLink>
-                    <NavLink to='ajouter' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left">Ajouter un nouvel employe</NavLink>
-                    <NavLink to='absence' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left">Enregistrer une abscence</NavLink>
+                    <NavLink to='repertoire' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left"><i class="fa fa-book" aria-hidden="true"/> Repertoire des employes</NavLink>
+                    <NavLink to='nouvel-employe' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left"><i class="fa fa-user-plus" aria-hidden="true"/> Ajouter un nouvel employe</NavLink>
+                    <NavLink to='absence' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left"><i class="fa fa-calendar" aria-hidden="true"/> Calendrier des abscences</NavLink>
+                    <NavLink to='absence' id="theNavLinkMenu" className="w3-bar-item w3-button w3-ripple w3-light-gray w3-round w3-margin-left"><i class="fa fa-sign-out" aria-hidden="true"/> Enregistrer une abscence</NavLink>
                 </div>
             </div>
 

@@ -51,7 +51,6 @@ class Employe(models.Model):
     email = models.EmailField(blank=True,null=True)
  
     ville = models.ForeignKey(Ville,on_delete=models.RESTRICT,default=1)
-    pays = models.ForeignKey(Pays,on_delete=models.RESTRICT,default=1)
     
     poste = models.ForeignKey(Poste,on_delete=models.RESTRICT,blank=False,null=False,default=1)
     departement = models.ForeignKey(Departement,on_delete=models.RESTRICT,blank=False,null=False,default=1)

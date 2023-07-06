@@ -70,9 +70,9 @@ class PosteSerializer(serializers.ModelSerializer):
 class EmployeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employe
-        fields = ('id','numeroEmploye','prenom','nom','dateNaissance','sexe','adresseDomicile','telephone','email','ville','pays','poste','departement','responsable')
+        fields = ('id','numeroEmploye','prenom','nom','dateNaissance','sexe','adresseDomicile','telephone','email','ville','poste','departement','responsable')
 
 class TermesEmploiSerializer(serializers.ModelSerializer):
     class Meta:
         model = TermesEmploi
-        fields = ('id','employe','dateEmbauche','dateFinEmploi','raisonFinEmploi','raisonFinDetails','typeEmploi','salaire','bonus','dateMisAJour')
+        fields = ('employe','dateEmbauche','dateFinEmploi','raisonFinEmploi','raisonFinDetails','typeEmploi','salaire','bonus','dateMisAJour')

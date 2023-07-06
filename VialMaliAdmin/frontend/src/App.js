@@ -1,24 +1,27 @@
-import React, {useState} from "react";
+import React, {useState, useMemo} from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 
 //pages
 import Acceuil from "./pages/Acceuil"
 import Personnel from "./pages/Personnel"
-import EmployeDetails from "./components/personnel/EmployeDetails";
+import ListeEtFicheEmployes from "./pages/personnel/repertoire/ListeEtFicheEmployes";
+import NouvelEmploye, { NouvelEmployeAction } from "./pages/personnel/nouvelEmploye/NouvelEmploye"
+import EmployeDetails from "./components/EmployeDetails";
 import EnregistrerAbsence from "./pages/personnel/EnregistrerAbsence";
 
 //layouts
 import RootLayout from "./layouts/RootLayout"
 import PersonnelLayout from "./layouts/PersonnelLayout"
 import RepertoireEmployesLayout from "./layouts/personnel/RepertoireEmployesLayout";
-import TousLesEmployesLayout from "./layouts/personnel/repertoire/TousLesEmployesLayout";
-import RechercheEmployeLayout from "./layouts/personnel/repertoire/RechercheEmployeLayout";
 import NouvelEmployeLayout from "./layouts/personnel/NouvelEmployeLayout";
 
 //functions
-import { employesLoader } from "./functions/personnel/employesLoader";
-
+import { employesLoader } from "./functions/employesLoader";
+import { termesEmploiLoader } from "./functions/termesEmploiLoader";
+import { employeFormActionPOST } from "./functions/employeFormActionPOST";
+import { termesEmploiFormActionPOST } from "./functions/termeEmploiFormActionPOST";
+import TermesEmploi from "./pages/personnel/nouvelEmploye/TermesEmploi";
 
 
 
@@ -28,34 +31,21 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Acceuil />} />
       <Route path="personnel" element={<PersonnelLayout />}>
-        <Route index element={<Personnel />} />
-        <Route path="repertoire" element={<RepertoireEmployesLayout />} loader={employesLoader}>
-          <Route path="actifs" element={<TousLesEmployesLayout />} loader={employesLoader}>
+          <Route index element={<Personnel />} />
+          <Route path="repertoire" element={<RepertoireEmployesLayout />}>
+              <Route path="" element={<ListeEtFicheEmployes />} loader={employesLoader}>
+                <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
+              </Route>            
+          </Route>
+
+          <Route path="nouvel-employe" element={<NouvelEmployeLayout />} action={employeFormActionPOST}>
+            <Route path="" element={<NouvelEmploye />} />
+            <Route path="termes/:numeroEmploye" element={<TermesEmploi />} loader={employesLoader} action={termesEmploiFormActionPOST}/>
             <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
           </Route>
-          <Route path="recherche/:searchKey" element={<RechercheEmployeLayout />} loader={employesLoader}>
-            <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
-          </Route>
-          
-        </Route>
-        <Route path="ajouter" element={<NouvelEmployeLayout />}>
-          <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
-        </Route>
-        <Route path="absence" element={<EnregistrerAbsence />} />
+          <Route path="absence" element={<EnregistrerAbsence />} />
 
       </Route>
-      {/* <Route path="ventes"/>
-      <Route path="operations" />
-      // <Route path="personnel" element={<PersonnelLayout />}>
-      //   <Route index element={<Personnel />} />
-        <Route path="employes" element={<EmployesLayout />}>
-          <Route index element={<Employe />} />
-          <Route path="repertoire" element={<RepertoireEmployes />} />
-          <Route path="ajouter" element={<AjouterEmploye />} />
-        </Route>
-        <Route path="absences" />
-        <Route path="salaires" />     
-      </Route> */}
     </Route>
       )
 )
