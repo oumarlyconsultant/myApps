@@ -4,11 +4,12 @@
 //Change Description: Create original code.
 import axios from "axios";
 import { redirect } from "react-router-dom";
+import getAPIData from "../getAPIData";
 
 function sendTermesEmploiFormData(formData,endpoint){
 
 //1.Create var that will contain the data
-let thisObj = ''
+
 
 //2.Create csrftoken
 function getCookie(name) {
@@ -33,7 +34,8 @@ const csrftoken = getCookie('csrftoken');
 axios.post(endpoint,formData,{headers:{"X-CSRFToken":csrftoken}})
 .then((response) => {if(Object.keys(response.data).length > 0) {
   console.log("SUCCESS! data sent")
-  window.location.replace("http://localhost:8000/personnel/nouvel-employe/"+response.data.numeroEmploye)
+  alert('Nouvel employe ajoute avec succes!')
+  window.location.replace("http://localhost:8000/personnel/repertoire/"+response.data.employe)
   // thisObj = JSON.parse(JSON.stringify(response.data.id))
   // window.location.replace("http://localhost:8000/personnel/nouvel-employe/"+response.data.numeroEmploye)
   // console.log(response.data[`${key}`])
@@ -59,7 +61,7 @@ axios.post(endpoint,formData,{headers:{"X-CSRFToken":csrftoken}})
 })
 
 //4.return true if obj was successfully sent, false otherwise
-console.log(thisObj)
+// console.log(thisObj)
 // console.log(key)
 }
 

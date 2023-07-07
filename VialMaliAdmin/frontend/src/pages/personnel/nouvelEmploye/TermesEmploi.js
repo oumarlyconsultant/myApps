@@ -15,14 +15,17 @@ export default function TermesEmploi(){
                 
                 <div style={{width:"800px"}}>
                     {/* The selection content */}
-                    <div className="w3-panel w3-text-white" style={{backgroundColor:"gray"}}><h3>Veuillez fournir les informations requises ci-dessous (*requis)</h3></div>
+                    <div className="w3-panel w3-text-white" style={{backgroundColor:"gray"}}><h3>Veuillez fournir les informations requises ci-dessous (<span style={{color:"red"}}>*</span>requis)</h3></div>
                     <Form method="post" action="/personnel/nouvel-employe">
-                    <h5 className="w3-center"><em><u>3. Termes d'emploi</u><b> [{employe.prenom} {employe.nom}]</b></em></h5>
+                    <input className="w3-input" name="formName" type="hidden" value='formTermesEmploi' /> 
+                    <h5 className="w3-center"><em><u>Termes d'emploi</u><b> [{employe.prenom} {employe.nom}]</b></em></h5>
+                    <p>
+                    <input className="w3-input w3-border w3-sand" name="employe" type="hidden" value={employe.id} readOnly /></p>
                     <p>      
-                    <label className="w3-text-black"><b>Date d'embauche*</b></label>
+                    <label className="w3-text-black"><b><span style={{color:"red"}}>Date d'embauche*</span></b></label>
                     <input className="w3-input w3-border w3-sand" name="dateEmbauche" type="date" /></p>
                     <fieldset >
-                    <label className="w3-text-black"><b>Type d'emploi*:</b></label> &nbsp;
+                    <label className="w3-text-black"><b><span style={{color:"red"}}>Type d'emploi*:</span></b></label> &nbsp;
                     <label>Permanent &nbsp;
                     <input className="w3-radio" type="radio" name="typeEmploi" value="P"/>
                     </label>&nbsp;        
@@ -31,7 +34,7 @@ export default function TermesEmploi(){
                     </label>
                     </fieldset>
                     <p>
-                    <label className="w3-text-black"><b>Salaire de base*</b></label>
+                    <label className="w3-text-black"><b><span style={{color:"red"}}>Salaire de base*</span></b></label>
                     <input className="w3-input w3-border w3-sand" name="salaire" type="text" /></p>
                     <p>
                     <label className="w3-text-black"><b>Bonus</b></label>

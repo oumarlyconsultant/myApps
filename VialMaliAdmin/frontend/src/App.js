@@ -1,6 +1,5 @@
 import React, {useState, useMemo} from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
 
 //pages
 import Acceuil from "./pages/Acceuil"
@@ -17,10 +16,8 @@ import RepertoireEmployesLayout from "./layouts/personnel/RepertoireEmployesLayo
 import NouvelEmployeLayout from "./layouts/personnel/NouvelEmployeLayout";
 
 //functions
-import { employesLoader } from "./functions/employesLoader";
-import { termesEmploiLoader } from "./functions/termesEmploiLoader";
-import { employeFormActionPOST } from "./functions/employeFormActionPOST";
-import { termesEmploiFormActionPOST } from "./functions/termeEmploiFormActionPOST";
+import { employesLoader } from "./functions/personnel/employesLoader";
+import { employeFormActionPOST } from "./functions/personnel/employeFormActionPOST";
 import TermesEmploi from "./pages/personnel/nouvelEmploye/TermesEmploi";
 
 
@@ -33,17 +30,17 @@ const router = createBrowserRouter(
       <Route path="personnel" element={<PersonnelLayout />}>
           <Route index element={<Personnel />} />
           <Route path="repertoire" element={<RepertoireEmployesLayout />}>
-              <Route path="" element={<ListeEtFicheEmployes />} loader={employesLoader}>
-                <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
-              </Route>            
+              <Route path="" element={<ListeEtFicheEmployes />} loader={employesLoader} />
+              <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
+              <Route path="modifierProfile/:numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
           </Route>
 
           <Route path="nouvel-employe" element={<NouvelEmployeLayout />} action={employeFormActionPOST}>
             <Route path="" element={<NouvelEmploye />} />
-            <Route path="termes/:numeroEmploye" element={<TermesEmploi />} loader={employesLoader} action={termesEmploiFormActionPOST}/>
-            <Route path=":numeroEmploye" element={<EmployeDetails />} loader={employesLoader}/>
+            <Route path="termes/:numeroEmploye" element={<TermesEmploi />} loader={employesLoader} />            
           </Route>
           <Route path="absence" element={<EnregistrerAbsence />} />
+          
 
       </Route>
     </Route>

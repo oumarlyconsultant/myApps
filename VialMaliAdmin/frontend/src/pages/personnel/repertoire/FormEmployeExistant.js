@@ -2,10 +2,19 @@ import { useState } from "react"
 import { Form, Link, NavLink, Outlet, redirect, useActionData, useLoaderData } from "react-router-dom"
 import getAPIData from "../../../functions/getAPIData"
 
-export default function NouvelEmploye(){
+export default function FormEmployeExistant(){
 
-    //Retrieve data
-    //Ville
+    const {numeroEmploye} = useParams()
+
+    const employes = useLoaderData()
+
+    // console.log(numeroEmploye)
+    const employe = employes.filter(obj => (obj.numeroEmploye == numeroEmploye || obj.id == numeroEmploye))[0]
+    const termesEmploi = getAPIData('termesEmploi').filter(obj => (obj.employe == employe.id))[0]
+    const ville = getAPIData('ville').filter(obj => (obj.id == employe.ville))[0]
+    const poste = getAPIData('poste').filter(obj => (obj.id == employe.poste))[0]
+    const departement = getAPIData('departement').filter(obj => (obj.id == employe.departement))[0]
+    const responsable = getAPIData('employe').filter(obj => (obj.id == employe.responsable))[0]
     
 
     const [searchKey,setSearchKey] = useState("")
@@ -34,7 +43,7 @@ export default function NouvelEmploye(){
                     <h5 className="w3-center"><em><u>Informations personnelles</u></em></h5>
                     <p>      
                     <label className="w3-text-black"><b><span style={{color:"red"}}>Prenom*</span></b></label>
-                    <input className="w3-input w3-border w3-sand" name="prenom" type="text" /></p>
+                    <input className="w3-input w3-border w3-sand" name="prenom" type="text" value/></p>
                     <p>      
                     <label className="w3-text-black"><b><span style={{color:"red"}}>Nom de famille*</span></b></label>
                     <input className="w3-input w3-border w3-sand" name="nom" type="text" /></p>

@@ -1,16 +1,25 @@
-import {NavLink, useLoaderData, useOutletContext, useParams} from "react-router-dom"
+import { useState } from "react"
+import {NavLink, useLoaderData, useLocation, useOutletContext, useParams} from "react-router-dom"
 import imgH from "../../static/media/photosEmployes/employe_generique.png"
+import getAPIData from "../functions/getAPIData"
 
-export default function EmployeDetails(){
+export default function EmployeDetails(navigate){
 
     const {numeroEmploye} = useParams()
 
     const employes = useLoaderData()
 
     // console.log(numeroEmploye)
-    const employe = employes.filter(employe => (employe.numeroEmploye == numeroEmploye))[0]
+    const employe = employes.filter(obj => (obj.numeroEmploye == numeroEmploye || obj.id == numeroEmploye))[0]
+    const termesEmploi = getAPIData('termesEmploi').filter(obj => (obj.employe == employe.id))[0]
+    const ville = getAPIData('ville').filter(obj => (obj.id == employe.ville))[0]
+    const poste = getAPIData('poste').filter(obj => (obj.id == employe.poste))[0]
+    const departement = getAPIData('departement').filter(obj => (obj.id == employe.departement))[0]
+    const responsable = getAPIData('employe').filter(obj => (obj.id == employe.responsable))[0]
+    
 
     // console.log(employe)
+    // console.log(termes)
 
     return(
         <div className="theEmployeDetails">
@@ -24,21 +33,28 @@ export default function EmployeDetails(){
                 <div className="w3-bar-item w3-container w3-cell">
                     <p>Prenom: <strong>{employe.prenom}</strong></p>
                     <p>Nom de famille: <strong>{employe.nom}</strong></p>
+                    <p>Numero d'employe: <strong>{employe.numeroEmploye}</strong></p>
                     <p>Date de naissance: {employe.dateNaissance}</p>
                     <p>Sexe: {employe.sexe}</p>
-                    <p>Adresse de domicile: {employe.adressDomicile}</p>
-                    <p>Ville: {employe.ville}</p>
+                    <p>Adresse de domicile: {employe.adresseDomicile}</p>
+                    <p>Ville: {ville && ville.ville}</p>
                     <p>Telephone(s): {employe.telephone} / {employe.telephone2}  </p>
                     <p>Email: {employe.email}</p>    
-                    <p>Poste occupe: {employe.poste}</p>                
-                    <p>Departement: {employe.departement}</p>                    
-                    <p>Responsable: {employe.responsable}</p>
-                    <p>Numero d'employe: <strong>{employe.numeroEmploye}</strong></p>
-                </div>            
+                    <p>Poste occupe: {poste && poste.nom}</p>                
+                    <p>Departement: {departement && departement.nom}</p>                    
+                    <p>Responsable: {responsable && responsable.prenom} {responsable && responsable.nom}</p>
+                    <p>---------------------- Termes d'emploi ----------------------</p>
+                    <p>Date d'embauche: {termesEmploi && termesEmploi.dateEmbauche}</p>
+                    <p>Type d'emploi: {termesEmploi && termesEmploi.typeEmploi}</p>
+                    <p>Salaire de base: {termesEmploi && termesEmploi.salaire}</p>
+                    <p>Bonus: {termesEmploi && termesEmploi.bonus}</p>
+
+                </div>
+
+
             </div>
             <div className="w3-panel w3-center">
             <NavLink className="w3-btn w3-yellow w3-border" style={{width:"300px"}}>Modifier profile</NavLink> &nbsp;
-            <NavLink className="w3-btn w3-red w3-border">Supprimer profile</NavLink>
             </div>
             
         </div>
