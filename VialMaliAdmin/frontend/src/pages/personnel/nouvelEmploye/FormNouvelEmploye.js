@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Form, Link, NavLink, Outlet, redirect, useActionData, useLoaderData } from "react-router-dom"
 import getAPIData from "../../../functions/getAPIData"
 
-export default function NouvelEmploye(){
+export default function FormNouvelEmploye(){
 
     //Retrieve data
     //Ville

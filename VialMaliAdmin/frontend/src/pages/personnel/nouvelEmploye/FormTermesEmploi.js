@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Form, Link, NavLink, Outlet, redirect, useActionData, useLoaderData, useParams } from "react-router-dom"
 import getAPIData from "../../../functions/getAPIData"
-export default function TermesEmploi(){
+export default function FormTermesEmploi(){
 
     const {numeroEmploye} = useParams()
 

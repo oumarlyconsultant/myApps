@@ -54,7 +54,7 @@ export default function EmployeDetails(navigate){
 
             </div>
             <div className="w3-panel w3-center">
-            <NavLink className="w3-btn w3-yellow w3-border" style={{width:"300px"}}>Modifier profile</NavLink> &nbsp;
+            <NavLink to="modifier" className="w3-btn w3-yellow w3-border" style={{width:"300px"}}>Modifier profile</NavLink> &nbsp;
             </div>
             
         </div>

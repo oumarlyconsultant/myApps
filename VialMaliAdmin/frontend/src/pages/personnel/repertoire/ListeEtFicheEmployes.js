@@ -14,11 +14,7 @@ export default function ListeEtFicheEmployes(){
 
     function selectionEmploye(numEmp){
         // setSelectedEmploye(numEmp)
-        navigate(numEmp,{
-            state:{
-                passNumeroEmploye:numEmp
-        }
-    })
+        navigate('details/'+numEmp)
     }
 
     function search(event){

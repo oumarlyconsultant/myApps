@@ -68,9 +68,29 @@ class PosteSerializer(serializers.ModelSerializer):
         fields = ('id','nom','niveau')
 
 class EmployeSerializer(serializers.ModelSerializer):
+    # id = serializers.ReadOnlyField()
+        
     class Meta:
         model = Employe
         fields = ('id','numeroEmploye','prenom','nom','dateNaissance','sexe','adresseDomicile','telephone','email','ville','poste','departement','responsable')
+        read_only_fields = ['id','numeroEmploye']
+
+    # def update(self, instance, validated_data):
+    #     instance.prenom = validated_data['prenom']
+    #     instance.nom = validated_data['nom']
+    #     instance.dateNaissance = validated_data['dateNaissance']
+    #     instance.sexe = validated_data['sexe']
+    #     instance.adresseDomicile = validated_data['adresseDomicile']
+    #     instance.telephone = validated_data['telephone']
+    #     instance.email = validated_data['email']
+        # instance.ville = validated_data['ville']
+        # instance.poste = validated_data['poste']
+        # instance.departement = validated_data['departement']
+        # instance.responsable = validated_data['responsable']
+
+        # instance.author = self.context['author']
+        # instance.save()
+        # return instance
 
 class TermesEmploiSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,4 +1,4 @@
-export const employesLoader = async () => {
+export const termesEmploiLoader = async () => {
     const res = await fetch('http://localhost:8000/api/termesEmploi/')
 
     // if(!res.ok) {
